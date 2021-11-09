@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.dailytasks.models.Tarefas;
 import br.com.dailytasks.repository.TarefasRepository;
 
-
 @RestController
 @RequestMapping("/task")
 public class TarefasController {
@@ -37,7 +36,7 @@ public class TarefasController {
 		}
 	}
 	
-	@GetMapping("/name/{title}")
+	@GetMapping("/tasks/{title}")
 	public ResponseEntity<List<Tarefas>> getAllTasksByName(@PathVariable(value = "title") String tarefa){
 		List<Tarefas> objectList = taskRepository.findAllByTitleContainingIgnoreCase(tarefa);
 		
@@ -56,7 +55,7 @@ public class TarefasController {
 	
 	@PutMapping("/update")
 	public ResponseEntity<Tarefas> update(@Valid @RequestBody Tarefas taskUpdate){
-        return ResponseEntity.status(201).body(taskRepository.save(taskUpdate));
+        return ResponseEntity.status(200).body(taskRepository.save(taskUpdate));
 	}
 	
 	

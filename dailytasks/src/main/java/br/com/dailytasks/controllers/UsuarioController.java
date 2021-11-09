@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.dailytasks.models.Usuario;
 import br.com.dailytasks.repository.UsuarioRepository;
+import br.com.dailytasks.service.UsuarioService;
 
 @RestController
 @RequestMapping("/user")
@@ -26,6 +26,9 @@ public class UsuarioController {
 
 	@Autowired
 	private UsuarioRepository userRepository;
+	
+	@Autowired
+	private UsuarioService userService;
 	
 	@GetMapping("/all")
 	public ResponseEntity<List<Usuario>> getAllUsers(){
@@ -38,16 +41,22 @@ public class UsuarioController {
 		}
 	}
 	
-	//@GetMapping("/")
+	@PostMapping("/login")
+	public ResponseEntity<Object> credentials(@Valid @RequestBody Usuario userLogin){
+		Optional<?> objectOptional = userService.getLogin(userLogin);
+		
+		if (objectOptional.isEmpty()) {
+			return ResponseEntity.status(400).build();
+		} else {
+			return ResponseEntity.status(200).body(objectOptional.get());
+		}
+	}
 	
-	//@PostMapping("/save")
-	//public ResponseEntity<Object> save(@Valid @RequestBody Usuario newUser){
-	//	Optional<Object> objectOptional = service.
-	//}
 	
 	@PutMapping("/update")
-	public ResponseEntity<Object> credentials(@Valid ResponseBody )
-	
+	public ResponseEntity<Usuario> update(@Valid @RequestBody Usuario userUpdate){
+		return ResponseEntity.status(202).body(userRepository.save(userUpdate)); 
+	}
 	
 	
 	@DeleteMapping("/delete/{id_user}")
