@@ -4,9 +4,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tb_tarefa")
@@ -21,6 +25,11 @@ public class Tarefas {
 	
 	@Size(max = 1000)
 	private String descricao;
+	
+	@ManyToOne
+	@JoinColumn(name = "usuario_id")
+	@JsonIgnoreProperties({"myTasks"})
+	private Usuario usuario;
 
 	public Long getId_tarefa() {
 		return id_tarefa;
@@ -45,5 +54,14 @@ public class Tarefas {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 	
 }
