@@ -38,7 +38,7 @@ public class TarefasController {
 	
 	@GetMapping("/tasks/{title}")
 	public ResponseEntity<List<Tarefas>> getAllTasksByName(@PathVariable(value = "title") String tarefa){
-		List<Tarefas> objectList = taskRepository.findAllByTitleContainingIgnoreCase(tarefa);
+		List<Tarefas> objectList = taskRepository.findAllByTarefaContainingIgnoreCase(tarefa);
 		
 		 if(objectList.isEmpty()) {
 	            return ResponseEntity.status(204).build();

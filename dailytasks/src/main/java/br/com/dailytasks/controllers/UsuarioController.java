@@ -52,6 +52,17 @@ public class UsuarioController {
 		}
 	}
 	
+	@PostMapping("/newuser")
+    public ResponseEntity<Object> newUser(@Valid @RequestBody Usuario newUser) {
+        Optional<Object> objectOptional = userService.saveUser(newUser);
+
+        if (objectOptional.isEmpty()) {
+            return ResponseEntity.status(400).build();
+        } else {
+            return ResponseEntity.status(201).body(objectOptional.get());
+        }
+    }
+	
 	
 	@PutMapping("/update")
 	public ResponseEntity<Usuario> update(@Valid @RequestBody Usuario userUpdate){
