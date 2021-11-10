@@ -1,0 +1,163 @@
+{
+	"info": {
+		"_postman_id": "342543a0-c7ef-46de-b86f-2231161b28b5",
+		"name": "DailyTasks",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "localhost:8080/api/users/"
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\":\"BI\",\r\n    \"email\":\"bi@email.com\",\r\n    \"senha\":\"usuario\"\r\n}"
+						},
+						"url": "localhost:8080/api/users/register"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "localhost:8080/api/users/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2,\r\n    \"nome\": \"BL\",\r\n    \"email\": \"bi@email.com\",\r\n    \"senha\": \"usuario\"\r\n}"
+						},
+						"url": "localhost:8080/api/users/update"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"bi@email.com\",\r\n    \"senha\":\"usuario\"\r\n}"
+						},
+						"url": "localhost:8080/api/users/login"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tasks",
+			"item": [
+				{
+					"name": "All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "localhost:8080/api/task/"
+					},
+					"response": []
+				},
+				{
+					"name": "By Tarefa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "localhost:8080/api/task/a"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "localhost:8080/api/task/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id_tarefa\": 1,\r\n        \"tarefa\": \"Vincular\",\r\n        \"descricao\": \"Fazer\"\r\n    }"
+						},
+						"url": "localhost:8080/api/task/"
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tarefa\":\"Pokemon\",\r\n    \"descricao\":\"Assistir pokémon\"\r\n}"
+						},
+						"url": "localhost:8080/api/task/"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
