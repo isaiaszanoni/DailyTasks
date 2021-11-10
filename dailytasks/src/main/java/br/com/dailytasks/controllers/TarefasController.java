@@ -19,13 +19,13 @@ import br.com.dailytasks.models.Tarefas;
 import br.com.dailytasks.repository.TarefasRepository;
 
 @RestController
-@RequestMapping("/task")
+@RequestMapping("/api/task")
 public class TarefasController {
 	
 	@Autowired
 	private TarefasRepository taskRepository;
 	
-	@GetMapping("/all")
+	@GetMapping("/")
 	public ResponseEntity<List<Tarefas>> getAllTasks(){
 		List<Tarefas> objectList = taskRepository.findAll();
 		
@@ -36,7 +36,7 @@ public class TarefasController {
 		}
 	}
 	
-	@GetMapping("/tasks/{title}")
+	@GetMapping("/{title}")
 	public ResponseEntity<List<Tarefas>> getAllTasksByName(@PathVariable(value = "title") String tarefa){
 		List<Tarefas> objectList = taskRepository.findAllByTarefaContainingIgnoreCase(tarefa);
 		
@@ -47,20 +47,20 @@ public class TarefasController {
 	        }
 	}
 		
-	@PostMapping("/save")
+	@PostMapping("/")
 	public ResponseEntity<Tarefas> save(@Valid @RequestBody Tarefas newTask){
         return ResponseEntity.status(201).body(taskRepository.save(newTask));
 	}
 	
 	
-	@PutMapping("/update")
+	@PutMapping("/")
 	public ResponseEntity<Tarefas> update(@Valid @RequestBody Tarefas taskUpdate){
         return ResponseEntity.status(200).body(taskRepository.save(taskUpdate));
 	}
 	
 	
 	
-	@DeleteMapping("/delete/{id_task}")
+	@DeleteMapping("/{id_task}")
     public void deleteTaskId(@PathVariable(value = "id_task") Long id_tarefa) {
         taskRepository.deleteById(id_tarefa);
     }

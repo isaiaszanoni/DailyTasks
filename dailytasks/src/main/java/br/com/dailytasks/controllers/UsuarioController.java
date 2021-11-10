@@ -21,7 +21,7 @@ import br.com.dailytasks.repository.UsuarioRepository;
 import br.com.dailytasks.service.UsuarioService;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/users")
 public class UsuarioController {
 
 	@Autowired
@@ -30,7 +30,7 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService userService;
 	
-	@GetMapping("/all")
+	@GetMapping("/")
 	public ResponseEntity<List<Usuario>> getAllUsers(){
 		List<Usuario> objectList = userRepository.findAll();
 		
@@ -52,7 +52,7 @@ public class UsuarioController {
 		}
 	}
 	
-	@PostMapping("/newuser")
+	@PostMapping("/register")
     public ResponseEntity<Object> newUser(@Valid @RequestBody Usuario newUser) {
         Optional<Object> objectOptional = userService.saveUser(newUser);
 
@@ -70,8 +70,8 @@ public class UsuarioController {
 	}
 	
 	
-	@DeleteMapping("/delete/{id_user}")
-    public void deleteUserId(@PathVariable(value = "id_user") Long id) {
+	@DeleteMapping("/{id}")
+    public void deleteUserId(@PathVariable(value = "id") Long id) {
         userRepository.deleteById(id);
     }
 }
