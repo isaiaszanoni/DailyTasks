@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+
+nav , .login {
+    font-size: 1.2rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+h1 a {
+    font-size: 1.6rem;
+    font-weight: 300;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+a.hover-amarelo:hover{
+    color: #FCFF6F !important;
+    
+}
+
+.login:hover {
+    background-color: #50505070;
+    border-color: #FCFF6F !important; 
+}
