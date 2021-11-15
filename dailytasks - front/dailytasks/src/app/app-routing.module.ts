@@ -4,6 +4,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SobreComponent } from './sobre/sobre.component';
+import { TasksComponent } from './tasks/tasks.component';
 
 const routes: Routes = [
 
@@ -11,6 +12,7 @@ const routes: Routes = [
 
   {path: 'home', component: HomeComponent},
   {path: 'sobre', component: SobreComponent},
+  {path: 'tasks', component: TasksComponent},
   {path: 'navbar', component: NavbarComponent},
   {path: 'footer', component: FooterComponent}
 ];
