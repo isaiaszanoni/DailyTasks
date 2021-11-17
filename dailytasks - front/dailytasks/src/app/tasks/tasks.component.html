@@ -78,24 +78,25 @@
     <div class="modal-dialog">
         <div class="modal-content bg-dark text-branco">
             <div class="modal-header">
+                <!-- <span> Nome do usuário: {{nome}} </span> -->
                 <h5 class="modal-title" id="add-taskModalLabel">Nova Task</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form class="form-group d-flex flex-column">
 
-                    <label for="" class="mt-3 me-3">Titulo</label>
-                    <input type="text" class="input-modal mt-2 mb-4">
+                    <label for="" class="mt-3 me-3">Tarefa:</label>
+                    <input [(ngModel)]='task.tarefa' type="text" class="input-modal mt-2 mb-4">
 
 
-                    <label>Tarefa</label>
-                    <textarea type="text" class="me-3 input-modal mt-2"></textarea>
+                    <label>Descrição:</label>
+                    <textarea [(ngModel)]='task.descricao' type="text" class="me-3 input-modal mt-2"></textarea>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-link text-decoration-none"
                     data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary">Salvar Task</button>
+                <button type="button" class="btn btn-primary" (click)='publicar()'data-bs-dismiss="modal">Salvar</button>
             </div>
         </div>
     </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment.prod';
 import { Usuario } from '../model/Usuario';
 import { AuthService } from '../service/auth.service';
 
@@ -45,6 +46,12 @@ export class NavbarComponent implements OnInit {
   entrar() {
     this.authService.login(this.user).subscribe((resp: Usuario) =>{
       this.user = resp
+
+      environment.token = this.user.token
+      environment.nome = this.user.nome
+      environment.id = this.user.id
+
+
       this.router.navigate(['/tasks'])
     }, err =>{
       if(err.status == 500){
@@ -52,5 +59,7 @@ export class NavbarComponent implements OnInit {
       }
     })
   }
+
+  
 
 }

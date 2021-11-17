@@ -1,4 +1,4 @@
-import { Tarefas } from './../model/Tarefas';
+import { environment } from 'src/environments/environment.prod';
 import { Usuario } from './../model/Usuario';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -19,6 +19,14 @@ export class AuthService {
 
   register(user: Usuario): Observable<Usuario>{
     return this.http.post<Usuario>('https://daily-dailytasks.herokuapp.com/api/users/register', user)
+  }
+
+  logado() {
+    let ok = false
+    if (environment.token != '') {
+      ok = true
+    }
+    return ok
   }
 
 }
