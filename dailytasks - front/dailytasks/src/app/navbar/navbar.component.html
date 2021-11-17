@@ -3,7 +3,6 @@
         <h1>
             <a class="navbar-brand nav text-amarelo ms-5" href="#">DailyTasks</a>
         </h1>
-      
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -27,3 +26,78 @@
       </div>
     </div>
   </nav>
+
+  <!-- Modal Cadastre-se!-->
+  <div class="modal bg-blur fade" id="cadastrarModal" tabindex="-1" aria-labelledby="cadastrarModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content border-0 d-flex justify-content-center text-center bg-transparent text-branco">
+
+        <button type="button" class="btn-close btn-close-white ms-auto me-4" data-bs-dismiss="modal"
+          aria-label="Close"></button>
+        <h3 class="modal-title text-center" id="cadastrarModalLabel">Cadastre-se!</h3>
+        <small>
+          Ou <a class="text-amarelo m-0 p-0 card-subtitle btn" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#loginModal">
+            Clique Aqui para fazer login!
+          </a>
+        </small>
+
+        <div class="modal-body d-flex justify-content-center">
+          <div class="col-10 col-sm-10 col-md-8 col-lg-6">
+            <div class="">
+              <div class="form-group d-flex flex-column">
+                <input [(ngModel)]='user.nome' type="text" placeholder="*Nome: " class="w-75 m-auto rounded input-modal mb-3">
+
+                <input [(ngModel)]='user.email' type="email" placeholder="*Email: " class="w-75 m-auto rounded input-modal mb-3">
+
+                <input (input)='confirmSenha($event)' type="password" placeholder="*Senha: " class="w-75 m-auto rounded input-modal mb-3">
+
+                <input [(ngModel)]='user.senha' type="password" placeholder="*Confirme sua senha: " class="w-75 m-auto rounded input-modal mb-1">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer border-0 d-flex flex-column-reverse justify-content-center">
+          <button type="button" class="btn btn-link link-light" data-bs-dismiss="modal">Cancelar</button>
+          <button (click)='cadastrar()' type="button" class="btn btn-primary">Enviar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Cadastre-se!-->
+  <div class="modal bg-blur fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content border-0 d-flex justify-content-center text-center bg-transparent text-branco">
+
+        <button type="button" class="btn-close btn-close-white ms-auto me-4" data-bs-dismiss="modal"
+          aria-label="Close"></button>
+        <h3 class="modal-title text-center" id="loginModalLabel">Faça Login</h3>
+        <small>
+          Ou <a class="text-amarelo m-0 p-0 card-subtitle btn" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#cadastrarModal">
+            Clique Aqui para se cadastrar!
+          </a>
+        </small>
+
+        <div class="modal-body d-flex justify-content-center">
+          <div class="col-10 col-sm-10 col-md-8 col-lg-6">
+            <div class="">
+              <div class="form-group d-flex flex-column">
+
+                <input [(ngModel)]='user.nome' type="text" placeholder="*Nome: " class="w-75 m-auto rounded input-modal mb-3">
+
+                <input [(ngModel)]='user.email' type="email" placeholder="*Email: " class="w-75 m-auto rounded input-modal mb-3">
+
+                <input [(ngModel)]='user.senha' type="password" placeholder="*Senha: " class="w-75 m-auto rounded input-modal">
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer border-0 d-flex flex-column-reverse justify-content-center">
+          <button type="button" class="btn btn-link link-light" data-bs-dismiss="modal">Cancelar</button>
+          <button (click)='entrar()' type="button" class="btn btn-primary" data-bs-dismiss="modal">Entrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
