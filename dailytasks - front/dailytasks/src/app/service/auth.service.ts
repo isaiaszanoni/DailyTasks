@@ -9,9 +9,15 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
+  nome = environment.nome
+
   constructor(
     private http: HttpClient
   ) { }
+
+  nomeUsuario(){
+    return environment.nome
+  }
 
   login(usuarioLogin: Usuario): Observable<Usuario>{
     return this.http.post<Usuario>('https://daily-dailytasks.herokuapp.com/api/users/login', usuarioLogin)

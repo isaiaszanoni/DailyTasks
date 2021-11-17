@@ -18,8 +18,8 @@ export class NavbarComponent implements OnInit {
   confirmarSenha: string
 
   constructor(
-    private authService: AuthService,
-    private router: Router
+    public authService: AuthService,
+    public router: Router
   ) { }
 
   ngOnInit(){

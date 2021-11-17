@@ -15,11 +15,17 @@
           <li class="nav-item">
             <a class="nav-link text-cinza me-5 hover-amarelo" routerLink='/sobre'>Sobre</a>
           </li>
-          <li class="nav-item">
+          <li *ngIf="authService.logado() == false" class="nav-item">
             <a class="nav-link text-cinza me-5 hover-amarelo" data-bs-toggle="modal" data-bs-target="#cadastrarModal">Cadastre-se</a>
           </li>
-          <li class="nav-item">
+          <li *ngIf="authService.logado() == false" class="nav-item">
             <a class="nav-link text-cinza btn me-5 hover-amarelo border-cinza login" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+          </li>
+          <li *ngIf="authService.logado() != false" class="nav-item">
+            <p class="nav-link text-cinza me-5 hover-amarelo">Olá, <span class="text-amarelo"> {{authService.nomeUsuario()}}</span></p>
+          </li>
+          <li *ngIf="authService.logado() != false" class="nav-item">
+            <a routerLink='/home'><img style="height: 30px; margin-left: -10px; margin-top: 7px;" src="../../assets/img/icones/logout.png" alt="ícone sair"></a>
           </li>
         </ul>
         
