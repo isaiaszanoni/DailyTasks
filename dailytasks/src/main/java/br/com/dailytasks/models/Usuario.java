@@ -34,7 +34,7 @@ public class Usuario {
 	private String token;
 	
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties({"usuario"})
+	@JsonIgnoreProperties("usuario")
 	private List<Tarefas> myTasks = new ArrayList<>();
 
 

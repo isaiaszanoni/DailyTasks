@@ -28,7 +28,7 @@ public class Tarefas {
 	
 	@ManyToOne
 	@JoinColumn(name = "usuario_id")
-	@JsonIgnoreProperties({"myTasks"})
+	@JsonIgnoreProperties("myTasks")
 	private Usuario usuario;
 
 	public Long getId_tarefa() {

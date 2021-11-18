@@ -15,11 +15,13 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import br.com.dailytasks.models.Usuario;
 import br.com.dailytasks.repository.UsuarioRepository;
 import br.com.dailytasks.service.UsuarioService;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/users")
 public class UsuarioController {
