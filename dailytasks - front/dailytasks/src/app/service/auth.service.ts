@@ -3,6 +3,7 @@ import { Usuario } from './../model/Usuario';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,8 @@ export class AuthService {
   nome = environment.nome
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) { }
 
   nomeUsuario(){
@@ -37,6 +39,14 @@ export class AuthService {
       ok = true
     }
     return ok
+  }
+
+  sair() {
+    environment.token = '',
+    environment.id = 0,
+    environment.email = '',
+    environment.nome = '',
+    this.router.navigate(['/home'])
   }
 
 }

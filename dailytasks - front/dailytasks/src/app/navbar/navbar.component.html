@@ -25,7 +25,7 @@
             <p class="nav-link text-cinza me-5 hover-amarelo">Olá, <span class="text-amarelo"> {{authService.nomeUsuario()}}</span></p>
           </li>
           <li *ngIf="authService.logado() != false" class="nav-item">
-            <a routerLink='/home'><img style="height: 30px; margin-left: -10px; margin-top: 7px;" src="../../assets/img/icones/logout.png" alt="ícone sair"></a>
+            <a (click)='authService.sair()'><img style="height: 30px; margin-left: -10px; margin-top: 7px;" src="../../assets/img/icones/logout.png" alt="ícone sair"></a>
           </li>
         </ul>
         
