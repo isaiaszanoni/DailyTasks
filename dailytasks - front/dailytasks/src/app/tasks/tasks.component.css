@@ -15,13 +15,18 @@ img.task-icon {
     margin-right: 6px;
 }
 
+.nova-task, .pesquisar {
+    max-width: 70%;
+    font-weight: 500;
+    font-size: 1.1rem;
+
+}
+
 .nova-task {
-    max-width: 28%;
     min-width: 100px;
 }
 
 .pesquisar {
-    max-width: 70%;
     min-width: 180px;
 }
 
