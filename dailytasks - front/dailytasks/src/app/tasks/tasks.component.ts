@@ -4,6 +4,7 @@ import { Tarefas } from './../model/Tarefas';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-tasks',
@@ -12,28 +13,47 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class TasksComponent implements OnInit {
 
-  task: Tarefas = new Tarefas()
+  tarefa: Tarefas = new Tarefas()
+  listarTasks: Tarefas[]
 
   user: Usuario = new Usuario()
-  id = environment.id
+  idUser = environment.id
+
   constructor(
+    public authService: AuthService,
     private router: Router,
     private taskService: TaskService
   ) { }
 
-  ngOnInit(): void {
-  
+  ngOnInit() {
+
+    if (environment.token == '') {
+      this.router.navigate(['/home'])
+    }
+
+    console.log(this.idUser);
+
+    this.findByIdUser()
   }
 
 
-  publicar(){
-    this.task.usuario = this.user
-
-    this.taskService.postTask(this.task).subscribe((resp: Tarefas) =>{
-      this.task = resp
-      alert('Tarefa postada com sucesso!')
-      this.task = new Tarefas()
+  findByIdUser() {
+    this.authService.getByIdUsuario(this.idUser).subscribe((resp: Usuario) => {
+      this.user = resp
     })
   }
-  
+
+  publicar() {
+    this.user.id = this.idUser
+    this.tarefa.usuario = this.user
+
+    this.taskService.postTask(this.tarefa).subscribe((resp: Tarefas) => {
+      this.tarefa = resp
+      alert('Parabéns, sua tarefa foi registrada!!')
+      this.tarefa = new Tarefas()
+      this.findByIdUser()
+    })
+
+  }
 }
+

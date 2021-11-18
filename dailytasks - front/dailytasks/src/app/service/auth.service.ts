@@ -27,6 +27,10 @@ export class AuthService {
     return this.http.post<Usuario>('https://daily-dailytasks.herokuapp.com/api/users/register', user)
   }
 
+  getByIdUsuario(id: number): Observable<Usuario>{
+    return this.http.get<Usuario>(`https://daily-dailytasks.herokuapp.com/api/users/${id}`)
+  }
+
   logado() {
     let ok = false
     if (environment.token != '') {

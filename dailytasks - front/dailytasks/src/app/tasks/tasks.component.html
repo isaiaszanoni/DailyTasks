@@ -5,43 +5,17 @@
 
         <main class="d-flex flex-wrap-reverse">
 
-            <div class="col-12 col-sm-12 col-md-9 col-lg-9 d-flex justify-content-center flex-wrap">
+            <div class="col-12 col-sm-12 col-md-9 col-lg-9 d-flex justify-content-center flex-wrap" *ngFor="let item of user.myTasks">
 
                 <div class="card col-11 col-md-9 col-lg-9 d-flex bg-card m-4">
                     <div class="card-header bg-card no-border">
-                        <h4 class="card-title">Lavar a Louça</h4>
-                        <h6 class="card-subtitle me-3 text-muted d-inline">14/11/2021</h6>
-                        <h6 class="card-subtitle text-muted d-inline">14:47</h6>
+                        <h4 class="card-title">{{ item.tarefa }}</h4>
+                        <span>{{ item.descricao }}</span>
                     </div>
                     <div class="card-body p-0 bg-card">
                         <div class="card-text ps-3">
                             <p>
 
-                            </p>
-                        </div>
-                    </div>
-                    <div class="text-sm no-border">
-                        <ul class="list-group-horizontal d-flex justify-content-around p-0 mb-1">
-                            <li class="list-inline-item"><img class="task-icon" src="../../assets/img/icones/ver.png"
-                                    alt=""> Ver</li>
-                            <li class="list-inline-item"><img class="task-icon"
-                                    src="../../assets/img/icones/editing-preto.png" alt="">Editar</li>
-                            <li class="list-inline-item"><img class="task-icon" src="../../assets/img/icones/trash.png"
-                                    alt="">Excluir</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="card col-11 col-md-9 col-lg-9 d-flex bg-card m-4">
-                    <div class="card-header bg-card no-border">
-                        <h4 class="card-title">Estudar Angular</h4>
-                        <h6 class="card-subtitle me-3 text-muted d-inline">14/11/2021</h6>
-                        <h6 class="card-subtitle text-muted d-inline">14:47</h6>
-                    </div>
-                    <div class="card-body p-0 bg-card">
-                        <div class="card-text ps-3">
-                            <p>
-                                Curso da Loiane
                             </p>
                         </div>
                     </div>
@@ -78,26 +52,25 @@
     <div class="modal-dialog">
         <div class="modal-content bg-dark text-branco">
             <div class="modal-header">
-                <!-- <span> Nome do usuário: {{nome}} </span> -->
                 <h5 class="modal-title" id="add-taskModalLabel">Nova Task</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="form-group d-flex flex-column">
+                <div class="form-group d-flex flex-column">
 
                     <label for="" class="mt-3 me-3">Tarefa:</label>
-                    <input [(ngModel)]='task.tarefa' type="text" class="input-modal mt-2 mb-4">
+                    <input [(ngModel)]='tarefa.tarefa' type="text" class="input-modal mt-2 mb-4">
 
 
                     <label>Descrição:</label>
-                    <textarea [(ngModel)]='task.descricao' type="text" class="me-3 input-modal mt-2"></textarea>
-                </form>
+                    <textarea [(ngModel)]='tarefa.descricao' type="text" class="me-3 input-modal mt-2"></textarea>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-link text-decoration-none"
                     data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" (click)='publicar()'data-bs-dismiss="modal">Salvar</button>
+                    <button type="button" class="btn btn-primary" (click)='publicar()'data-bs-dismiss="modal">Salvar</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
