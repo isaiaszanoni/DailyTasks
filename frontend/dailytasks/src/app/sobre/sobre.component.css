@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+
+
+section .content{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 1.4rem;
+    height: auto;
+}
+
+.left, .right{
+    width: 50%;
+    height: 60vh;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+
+h2{
+    text-align: center;
+}
+
+h2 span{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+}
+
+p.descricao{
+    text-align: justify;
+    line-height: 2.5;
+    margin-left: 2rem;
+}
+
+p.descricao, input, textarea, button{
+    font-size: 1.26rem;
+}
+
+a{
+    text-decoration: none;
+    margin-left: 2rem;
+}
+
+::placeholder {
+    color: #C5C5C5;
+}
+
+input{
+    height: 3.36rem;
+}
+
+input, textarea{
+    width: 80%;
+    background-color: #1F2123;
+    margin-bottom: .8rem;
+    border: 1px solid;
+    border-radius: 8px;
+    margin: .6rem auto;
+    color: #C5C5C5;
+    padding-left: .4rem;
+}
+
+button{
+    width: 80%; 
+    margin: 0 auto;
+    font-weight: 500;
+}
+
+textarea{
+    resize: none;
+}
+
+.dev{
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+.cards {
+    height: auto;
+    background-color: #1F2123;
+    border: 1px solid #696969;
+    border-radius: 8px;
+    text-align: center;
+    padding: 1rem;
+    margin: 4rem 0;
+}
+
+img{
+    margin: 0 auto;
+}
+
+.cards p:nth-child(2){
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.cards p:nth-child(3), .cards p:nth-child(4){
+    font-size: 1.2rem;
+}
+
+.cards p:nth-child(2),.cards p:nth-child(3),.cards p:nth-child(4){
+    margin-bottom: .2rem;
+
+}
+
+hr{
+    width: 80%;
+    margin: .8rem auto;
+}
+
+.icones{
+    display: flex;
+    gap: 1rem;
+    margin: .8rem 0;
+}
+
+ .icones a img:hover{
+    opacity: 0.5;
+    
+} 
+
+
+@media only screen and (min-width:200px) and (max-width:767px){
+
+
+    section .content{
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+    }
+
+    .left, .right{
+        width: 100%;
+        height: auto;
+    }
+
+    p.descricao{
+        margin: 0;
+        padding: 0 1rem;
+    }
+
+    p.descricao, input, textarea, button{
+        font-size: 1.16rem;
+    }
+
+    h2{
+        text-align: left;
+        padding: 0 1rem;
+    }
+
+    h2:nth-child(1){
+        margin-top: 1.2rem;
+    }
+
+    input, textarea,button, .cards{
+        width: 94%;
+        
+    }
+
+    button{
+        margin-top: 1rem;
+    }
+    
+    .dev{
+        display: flex;
+        flex-direction: column;
+        height: 128vh;
+    }
+
+   .cards{
+       margin: 1.4rem auto;
+   }
+ 
+   .icones{
+        position: relative;
+        left: 25px;
+   }
+
+}
