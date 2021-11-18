@@ -11,7 +11,9 @@ h1 a {
     font-family: 'Poppins', sans-serif;
 }
 
-
+.navbar-light .navbar-nav .nav-link {
+    cursor: pointer;
+}
 
 a.hover-amarelo:hover{
     color: #FCFF6F !important;
@@ -27,3 +29,9 @@ a.hover-amarelo:hover{
 
 }
 */
+
+button{
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+

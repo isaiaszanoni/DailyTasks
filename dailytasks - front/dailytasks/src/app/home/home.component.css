@@ -18,12 +18,15 @@ ul {
     max-height: 500px;
 }
 
+button{
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
 @media only screen and (min-width:200px) and (max-width:567px){
     
     button{
         width: 90vw;
-        font-size: 1.2rem;
-        font-weight: 500;
     }
 
 }

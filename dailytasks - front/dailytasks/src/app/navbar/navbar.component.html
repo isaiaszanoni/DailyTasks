@@ -50,7 +50,7 @@
 
         <div class="modal-body d-flex justify-content-center">
           <div class="col-10 col-sm-10 col-md-8 col-lg-6">
-            <div class="">
+            <div class="mb-4">
               <div class="form-group d-flex flex-column">
                 <input [(ngModel)]='user.nome' type="text" placeholder="*Nome: " class="w-75 m-auto rounded input-modal mb-3">
 
@@ -61,11 +61,9 @@
                 <input [(ngModel)]='user.senha' type="password" placeholder="*Confirme sua senha: " class="w-75 m-auto rounded input-modal mb-1">
               </div>
             </div>
+            <button type="button" class="btn btn-link link-light" data-bs-dismiss="modal">Cancelar</button>
+            <button (click)='cadastrar()' type="button" class="btn btn-primary">Cadastrar</button>
           </div>
-        </div>
-        <div class="modal-footer border-0 d-flex flex-column-reverse justify-content-center">
-          <button type="button" class="btn btn-link link-light" data-bs-dismiss="modal">Cancelar</button>
-          <button (click)='cadastrar()' type="button" class="btn btn-primary">Enviar</button>
         </div>
       </div>
     </div>
@@ -87,7 +85,7 @@
 
         <div class="modal-body d-flex justify-content-center">
           <div class="col-10 col-sm-10 col-md-8 col-lg-6">
-            <div class="">
+            <div class="mb-4">
               <div class="form-group d-flex flex-column">
 
                 <input [(ngModel)]='user.nome' type="text" placeholder="*Nome: " class="w-75 m-auto rounded input-modal mb-3">
@@ -98,11 +96,9 @@
 
               </div>
             </div>
+            <button type="button" class="btn btn-link link-light" data-bs-dismiss="modal">Cancelar</button>
+            <button (click)='entrar()' type="button" class="btn btn-primary" data-bs-dismiss="modal">Entrar</button>
           </div>
-        </div>
-        <div class="modal-footer border-0 d-flex flex-column-reverse justify-content-center">
-          <button type="button" class="btn btn-link link-light" data-bs-dismiss="modal">Cancelar</button>
-          <button (click)='entrar()' type="button" class="btn btn-primary" data-bs-dismiss="modal">Entrar</button>
         </div>
       </div>
     </div>
