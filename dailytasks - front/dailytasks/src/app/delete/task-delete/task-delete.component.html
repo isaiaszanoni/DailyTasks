@@ -1,7 +1,7 @@
 <div class="container-fluid bg-preto" style="min-height: 90vh">
     <div class="row">
 
-        <h2 class="text-branco text-md-center text-lg-center mb-3 myTasks">Excluir Tarefa</h2>
+        <h2 class="text-branco text-md-center text-lg-center mb-3 myTasks">Tem certeza que deseja apagar a tarefa </h2>
 
         <main class="d-flex flex-wrap-reverse">
 
@@ -22,8 +22,8 @@
                         </div>
                     </div>
                     <div class="card-bottom d-flex justify-content-evenly no-border">
-                        <button class="btn btn-link">Cancelar</button>
-                        <button class="btn btn-danger">Excluir task</button>
+                        <button class="btn btn-link" routerLink='/tasks'>Cancelar</button>
+                        <button class="btn btn-danger"  (click)='apagar()'>Excluir task</button>
                     </div>
                 </div>
 

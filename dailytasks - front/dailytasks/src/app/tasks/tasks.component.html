@@ -30,20 +30,16 @@
                 <div class="card col-11 col-md-9 col-lg-9 d-flex bg-card m-4">
                     <div class="card-header bg-card no-border">
                         <h4 class="card-title">{{ item.tarefa }}</h4>
-                        <span>{{ item.descricao }}</span>
-                        <span> {{ item.id_tarefa }} </span>
                     </div>
                     <div class="card-body p-0 bg-card">
                         <div class="card-text ps-3">
                             <p>
-
+                                <span>{{ item.descricao }}</span>
                             </p>
                         </div>
                     </div>
                     <div class="text-sm no-border">
                         <ul class="list-group-horizontal d-flex justify-content-around p-0 mb-1">
-                            <li class="list-inline-item"><img class="task-icon" src="../../assets/img/icones/ver.png"
-                                    alt=""> Ver</li>
                             <li class="list-inline-item">
                                 <button class="btn" [routerLink]="['/task-edit', item.id_tarefa]">
                                     <img class=" task-icon" src="../../assets/img/icones/editing-preto.png" alt="">
