@@ -1,1 +1,37 @@
-<p>task-edit works!</p>
+<div class="container-fluid bg-preto" style="min-height: 90vh">
+    <div class="row">
+
+        <h2 class="text-branco text-md-center text-lg-center mb-3 myTasks">Editar Tarefa</h2>
+
+        <main class="d-flex flex-wrap-reverse">
+
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center flex-wrap">
+
+
+                <div class="card col-11 col-md-9 col-lg-9 d-flex bg-card m-4">
+                    <div class="card-header bg-card no-border">
+                        <label for="" class="mt-3 me-3">Tarefa:</label>
+                        <input [(ngModel)]='task.tarefa' type="text" class="input-modal rounded-1 mt-2 mb-4">
+                        <span>tarefa: {{task.id_tarefa}}</span>
+                        <span>id: {{task.descricao}} </span>
+
+                    </div>
+                    <div class="card-body p-0 bg-card">
+                        <div class="card-text ps-3">
+                            <label>Descrição:</label>
+                            <textarea [(ngModel)]='task.descricao' type="text"class="me-3 input-modal mt-2"></textarea>
+                        </div>
+                    </div>
+                    <div class="card-bottom d-flex justify-content-evenly no-border">
+                        <button class="btn btn-link" routerLink='/tasks'>Cancelar</button>
+                        <button class="btn btn-primary" (click)='atualizar()'>Editar task</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+</div>

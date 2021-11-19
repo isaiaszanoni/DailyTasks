@@ -4,15 +4,34 @@
         <h2 class="text-branco text-md-center text-lg-center mb-3 myTasks">Minhas Tarefas</h2>
 
         <main class="d-flex flex-wrap-reverse">
-            
-            
-            <div class="col-12 col-sm-12 col-md-9 col-lg-9 d-flex justify-content-center flex-wrap" *ngFor="let item of user.myTasks">
-                
+
+            <!--card padrao-->
+            <div class="min-col col-12 col-sm-12 col-md-9 col-lg-9 d-block d-flex justify-content-center">
+
+                <div class="card border-0 col-11 col-md-9 col-lg-9 d-flex bg-preto m-4">
+                    <div class="card-body p-0 bg-preto">
+                        <div class="card-text ps-3">
+                            <p>
+                                <span>.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!--/card padrao-->
+
+            <div class="min-col col-12 col-sm-12 col-md-9 col-lg-9 d-flex justify-content-center"
+                *ngFor="let item of user.myTasks">
+
 
                 <div class="card col-11 col-md-9 col-lg-9 d-flex bg-card m-4">
                     <div class="card-header bg-card no-border">
                         <h4 class="card-title">{{ item.tarefa }}</h4>
                         <span>{{ item.descricao }}</span>
+                        <span> {{ item.id_tarefa }} </span>
                     </div>
                     <div class="card-body p-0 bg-card">
                         <div class="card-text ps-3">
@@ -25,10 +44,18 @@
                         <ul class="list-group-horizontal d-flex justify-content-around p-0 mb-1">
                             <li class="list-inline-item"><img class="task-icon" src="../../assets/img/icones/ver.png"
                                     alt=""> Ver</li>
-                            <li class="list-inline-item"><img class="task-icon"
-                                    src="../../assets/img/icones/editing-preto.png" alt="">Editar</li>
-                            <li class="list-inline-item"><img class="task-icon" src="../../assets/img/icones/trash.png"
-                                    alt="">Excluir</li>
+                            <li class="list-inline-item">
+                                <button class="btn" [routerLink]="['/task-edit', item.id_tarefa]">
+                                    <img class=" task-icon" src="../../assets/img/icones/editing-preto.png" alt="">
+                                    Editar
+                                </button>
+                            </li>
+                            <li class="list-inline-item">
+                                <button class="btn" [routerLink]="['/task-delete', item.id_tarefa]">
+                                    <img class="task-icon" src="../../assets/img/icones/trash.png" alt="">
+                                    Excluir
+                                </button>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -39,11 +66,11 @@
                     <button class="btn btn-primary mt-3 mb-3 mb-md-5 mb-lg-5 nova-task" data-bs-toggle="modal"
                         data-bs-target="#add-taskModal">Inserir tarefa</button>
                     <h6>Pesquisar por Titulo:</h6>
-                    <input [(ngModel)]='pesquisa' (keyup)='findByNameTasks()' type="text" placeholder="Digite o titulo da tarefa" class="input-modal pesquisar">
+                    <input [(ngModel)]='pesquisa' (keyup)='findByNameTasks()' type="text"
+                        placeholder="Digite o titulo da tarefa" class="input-modal pesquisar">
                 </div>
             </div>
         </main>
-
     </div>
 </div>
 
@@ -68,8 +95,9 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-link text-decoration-none"
                     data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" (click)='publicar()'data-bs-dismiss="modal">Salvar</button>
-                </div>
+                <button type="button" class="btn btn-primary" (click)='publicar()'
+                    data-bs-dismiss="modal">Salvar</button>
             </div>
         </div>
     </div>
+</div>

@@ -17,8 +17,9 @@ const routes: Routes = [
   {path: 'tasks', component: TasksComponent},
   {path: 'navbar', component: NavbarComponent},
   {path: 'footer', component: FooterComponent},
-  {path: 'task-edit', component: TaskEditComponent},
-  {path: 'task-delete', component: TaskDeleteComponent}
+
+  {path: 'task-edit/:id', component: TaskEditComponent},
+  {path: 'task-delete/:id', component: TaskDeleteComponent}
 ];
 
 @NgModule({

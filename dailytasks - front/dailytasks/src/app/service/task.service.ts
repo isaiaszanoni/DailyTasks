@@ -19,12 +19,16 @@ export class TaskService {
     return this.http.get<Tarefas[]>('https://daily-dailytasks.herokuapp.com/api/task/', this.token)
   }
 
+  getTaskById(id: number): Observable<Tarefas>{
+    return this.http.get<Tarefas>(`https://daily-dailytasks.herokuapp.com/api/task/id/${id}`, this.token)
+  }
+
   postTask(task: Tarefas): Observable<Tarefas>{
     return this.http.post<Tarefas>('https://daily-dailytasks.herokuapp.com/api/task/', task, this.token)
   }
 
-  putTask(task: Task): Observable<Tarefas>{
-    return this.http.put<Tarefas>('https://daily-dailytasks.herokuapp.com/api/task/', task, this.token)
+  putTask(task: Tarefas): Observable<Tarefas>{
+    return this.http.put<Tarefas>('https://daily-dailytasks.herokuapp.com/api/task/',task, this.token)
   }
   
   deleteTask(id: number){
@@ -35,7 +39,11 @@ export class TaskService {
     return this.http.get<Tarefas[]>(`https://daily-dailytasks.herokuapp.com/api/task/${title}`)
   }
 
-  // getAllByNomeProdutos(descricao: string): Observable<Produto[]>{
-  //   return this.http.get<Produto[]>(`${this.endereco}/produtos/descricaoproduto/${descricao}`)
-  // }
+  /*
+  getByIdTask(id: number): Observable<Tarefas> {
+    return 
+  }
+  */
+
+
 }
