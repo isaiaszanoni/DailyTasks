@@ -42,6 +42,17 @@ public class UsuarioController {
 			return ResponseEntity.status(200).body(objectList);
 		}
 	}
+
+	@GetMapping("/{id}")
+    public ResponseEntity<Usuario> getByIdUser(@PathVariable(value = "id") Long id) {
+        Optional<Usuario> objectoUser = userRepository.findById(id);
+
+        if (objectoUser.isPresent()) {
+            return ResponseEntity.status(200).body(objectoUser.get());
+        } else {
+            return ResponseEntity.status(204).build();
+        }
+    }
 	
 	@PostMapping("/login")
 	public ResponseEntity<Object> credentials(@Valid @RequestBody Usuario userLogin){
