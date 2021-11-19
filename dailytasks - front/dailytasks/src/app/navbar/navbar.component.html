@@ -21,14 +21,31 @@
           <li *ngIf="authService.logado() == false" class="nav-item">
             <a class="nav-link text-cinza btn me-5 hover-amarelo border-cinza login" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
           </li>
+          
           <li *ngIf="authService.logado() != false" class="nav-item">
-            <p class="nav-link text-cinza me-5 hover-amarelo">Olá, <span class="text-amarelo"> {{authService.nomeUsuario()}}</span></p>
+            <p class="nav-link text-cinza me-1 user">Olá, <span class="text-amarelo"> {{authService.nomeUsuario()}}</span></p>
           </li>
-          <li *ngIf="authService.logado() != false" class="nav-item">
-            <a (click)='authService.sair()'><img style="height: 30px; margin-left: -10px; margin-top: 7px;" src="../../assets/img/icones/logout.png" alt="ícone sair"></a>
-          </li>
+
+          <!-- DROPDOWN USUARIO -->
+
+          <div class="dropdown dropstart " *ngIf="authService.logado() != false" >
+            <button class="btn text-cinza" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="../../assets/img/icones/user.png" style="height: 22px;" alt="">
+            </button>
+            <ul class="dropdown-menu bg-preto mt-5" aria-labelledby="dropdownMenuButton1">
+              <li>
+                <a class="dropdown-item bg-preto text-cinza hover-amarelo" href="#">Editar cadastro</a>
+              </li>
+              <li  class="dropdown-item bg-preto">
+                <a routerLink="/tasks" class="text-cinza hover-amarelo">Minhas Tarefas</a>
+              </li>
+              <li class="dropdown-item bg-preto hover-amarelo">
+                <a (click)='authService.sair()' class="text-cinza hover-amarelo pointer-event">Sair</a>
+              </li>
+            </ul>
+          </div>
+          <!-- / DROPDOWN USUARIO  -->
         </ul>
-        
       </div>
     </div>
   </nav>
