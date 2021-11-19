@@ -31,4 +31,11 @@ export class TaskService {
 
   }
 
+  getAllTasksByTitle(title: string): Observable<Tarefas[]>{
+    return this.http.get<Tarefas[]>(`https://daily-dailytasks.herokuapp.com/api/task/${title}`)
+  }
+
+  // getAllByNomeProdutos(descricao: string): Observable<Produto[]>{
+  //   return this.http.get<Produto[]>(`${this.endereco}/produtos/descricaoproduto/${descricao}`)
+  // }
 }

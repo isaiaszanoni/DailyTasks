@@ -1,11 +1,13 @@
-<div class="container-fluid bg-preto" style="min-height: 500px">
+<div class="container-fluid bg-preto" style="min-height: 90vh">
     <div class="row">
 
-        <h2 class="text-branco text-md-center text-lg-center mb-3">Minhas Tasks</h2>
+        <h2 class="text-branco text-md-center text-lg-center mb-3 myTasks">Minhas Tarefas</h2>
 
         <main class="d-flex flex-wrap-reverse">
-
+            
+            
             <div class="col-12 col-sm-12 col-md-9 col-lg-9 d-flex justify-content-center flex-wrap" *ngFor="let item of user.myTasks">
+                
 
                 <div class="card col-11 col-md-9 col-lg-9 d-flex bg-card m-4">
                     <div class="card-header bg-card no-border">
@@ -32,15 +34,12 @@
                 </div>
 
             </div>
-            <div class="col-12 col-sm-12 col-md-3 col-lg-3 text-branco">
+            <div class="col-12 col-sm-12 col-md-3 col-lg-3 text-branco btn-input">
                 <div class="d-flex flex-column m-auto">
-                    <h3 class=" d-none d-sm-none d-md-block d-lg-block">Nova task</h3>
-
                     <button class="btn btn-primary mt-3 mb-3 mb-md-5 mb-lg-5 nova-task" data-bs-toggle="modal"
-                        data-bs-target="#add-taskModal">Nova task</button>
-
+                        data-bs-target="#add-taskModal">Inserir tarefa</button>
                     <h6>Pesquisar por Titulo:</h6>
-                    <input type="text" placeholder="Digite o titulo da task" class="input-modal pesquisar">
+                    <input [(ngModel)]='pesquisa' (keyup)='findByNameTasks()' type="text" placeholder="Digite o titulo da tarefa" class="input-modal pesquisar">
                 </div>
             </div>
         </main>
@@ -52,7 +51,7 @@
     <div class="modal-dialog">
         <div class="modal-content bg-dark text-branco">
             <div class="modal-header">
-                <h5 class="modal-title" id="add-taskModalLabel">Nova Task</h5>
+                <h5 class="modal-title" id="add-taskModalLabel">Nova Tarefa</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

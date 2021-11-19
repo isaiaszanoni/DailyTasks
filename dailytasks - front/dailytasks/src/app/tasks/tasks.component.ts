@@ -13,6 +13,8 @@ import { AuthService } from '../service/auth.service';
 })
 export class TasksComponent implements OnInit {
 
+  pesquisa: string
+
   tarefa: Tarefas = new Tarefas()
   listarTasks: Tarefas[]
 
@@ -34,6 +36,7 @@ export class TasksComponent implements OnInit {
     console.log(this.idUser);
 
     this.findByIdUser()
+    this.taskService.getAllTasks()
   }
 
 
@@ -53,7 +56,16 @@ export class TasksComponent implements OnInit {
       this.tarefa = new Tarefas()
       this.findByIdUser()
     })
+  }
 
+  findByNameTasks(){
+    if(this.pesquisa == ''){
+      this.findByIdUser()
+    }else{
+      this.taskService.getAllTasksByTitle(this.pesquisa).subscribe((resp: Tarefas[])=>{
+        this.user.myTasks = resp
+      })
+    }
   }
 }
 
