@@ -48,6 +48,12 @@ public class TarefasController {
 	            return ResponseEntity.status(200).body(objectList);
 	        }
 	}
+
+	@GetMapping("/id/{id_tarefa}")
+    public ResponseEntity<Tarefas> getTaskById(@PathVariable(value = "id_tarefa") Long id_tarefa){
+        return taskRepository.findById(id_tarefa).map(resp -> ResponseEntity.ok(resp))
+            .orElse(ResponseEntity.notFound().build());
+    }
 		
 	@PostMapping("/")
 	public ResponseEntity<Tarefas> save(@Valid @RequestBody Tarefas newTask){
