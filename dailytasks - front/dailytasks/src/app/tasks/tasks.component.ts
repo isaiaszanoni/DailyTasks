@@ -37,6 +37,7 @@ export class TasksComponent implements OnInit {
 
     this.findByIdUser()
     this.taskService.getAllTasks()
+    
   }
 
 
@@ -67,5 +68,6 @@ export class TasksComponent implements OnInit {
       })
     }
   }
+
 }
 
