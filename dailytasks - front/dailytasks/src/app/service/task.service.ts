@@ -23,12 +23,12 @@ export class TaskService {
     return this.http.post<Tarefas>('https://daily-dailytasks.herokuapp.com/api/task/', task, this.token)
   }
 
-  updateTask(){
-
+  putTask(task: Task): Observable<Tarefas>{
+    return this.http.put<Tarefas>('https://daily-dailytasks.herokuapp.com/api/task/', task, this.token)
   }
   
-  deleteTasks(){
-
+  deleteTask(id: number){
+    return this.http.delete(`https://daily-dailytasks.herokuapp.com/api/task/${id}`, this.token)
   }
 
   getAllTasksByTitle(title: string): Observable<Tarefas[]>{
