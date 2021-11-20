@@ -15,15 +15,45 @@ img.task-icon {
     margin-right: 6px;
 }
 
+.nova-task, .pesquisar {
+    max-width: 70%;
+    font-weight: 500;
+    font-size: 1.1rem;
+
+}
+
 .nova-task {
-    max-width: 28%;
     min-width: 100px;
 }
 
 .pesquisar {
-    max-width: 70%;
     min-width: 180px;
 }
 
 
+@media only screen and (max-width:568px){
 
+    .btn-input{
+        width: 94vw;
+    }
+
+    .pesquisar, .nova-task{
+        margin: 0 auto;
+        width: 81vw;
+        height: 3rem;
+        font-size: 1.2rem;
+    }
+    .text-branco {
+        text-align: center;
+    }
+
+    .myTasks{
+        margin-top: 1.8rem;
+    }
+
+    h6{ 
+        font-size: 1.4rem;
+        margin: 1.6rem 0;
+    }
+
+}

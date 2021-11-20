@@ -5,13 +5,16 @@ nav , .login {
     font-family: 'Poppins', sans-serif;
 }
 
-h1 a {
+h1 {
     font-size: 1.6rem;
     font-weight: 300;
     font-family: 'Poppins', sans-serif;
 }
 
-
+.navbar-light .navbar-nav .nav-link, li > a {
+    cursor: pointer;
+    text-decoration: none;
+}
 
 a.hover-amarelo:hover{
     color: #FCFF6F !important;
@@ -22,8 +25,31 @@ a.hover-amarelo:hover{
     background-color: #50505070;
     border-color: #FCFF6F !important; 
 }
-/*
-.icone-sair {
 
+button{
+    font-weight: 500;
+    font-size: 1.1rem;
 }
-*/
+
+p > a{
+    text-decoration: none;
+}
+
+.user {
+    cursor: default!important;
+}
+
+h1, .user{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /* O texto não ficará selecionável */
+}
+
+.navbar-toggler{
+    border: 1px solid #FCFF6F;
+}
+

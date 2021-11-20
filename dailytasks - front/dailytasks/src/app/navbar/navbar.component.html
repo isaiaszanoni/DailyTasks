@@ -1,10 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-preto">
-    <div class="container-fluid">
-        <h1>
-            <a class="navbar-brand nav text-amarelo ms-5" href="#">DailyTasks</a>
-        </h1>
+    <div class="container-fluid mt-2">
+        <h1 class="navbar-brand nav text-amarelo ms-5">DailyTasks</h1>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <span>
+          <img src="../../assets/img/icones/menu-aberto.png" style="height: 18px;">
+        </span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mb-2 ms-auto mb-lg-0">
@@ -21,14 +21,31 @@
           <li *ngIf="authService.logado() == false" class="nav-item">
             <a class="nav-link text-cinza btn me-5 hover-amarelo border-cinza login" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
           </li>
+          
           <li *ngIf="authService.logado() != false" class="nav-item">
-            <p class="nav-link text-cinza me-5 hover-amarelo">Olá, <span class="text-amarelo"> {{authService.nomeUsuario()}}</span></p>
+            <p class="nav-link text-cinza me-1 user">Olá, <span class="text-amarelo"> {{authService.nomeUsuario()}}</span></p>
           </li>
-          <li *ngIf="authService.logado() != false" class="nav-item">
-            <a routerLink='/home'><img style="height: 30px; margin-left: -10px; margin-top: 7px;" src="../../assets/img/icones/logout.png" alt="ícone sair"></a>
-          </li>
+
+          <!-- DROPDOWN USUARIO -->
+
+          <div class="dropdown dropstart" *ngIf="authService.logado() != false"  >
+            <button class="btn text-cinza" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="../../assets/img/icones/user.png" style="height: 22px;" alt="">
+            </button>
+            <ul class="dropdown-menu bg-preto mt-5" aria-labelledby="dropdownMenuButton1">
+              <li>
+                <a class="dropdown-item bg-preto text-cinza hover-amarelo" href="#">Editar cadastro</a>
+              </li>
+              <li  class="dropdown-item bg-preto">
+                <a routerLink="/tasks" class="text-cinza hover-amarelo">Minhas Tarefas</a>
+              </li>
+              <li class="dropdown-item bg-preto hover-amarelo">
+                <a (click)='authService.sair()' class="text-cinza hover-amarelo pointer-event">Sair<img src="../../assets/img/icones/logout.png" style="height: 18px; margin-left: 14px;" alt=""></a>
+              </li>
+            </ul>
+          </div>
+          <!-- / DROPDOWN USUARIO  -->
         </ul>
-        
       </div>
     </div>
   </nav>
@@ -50,7 +67,7 @@
 
         <div class="modal-body d-flex justify-content-center">
           <div class="col-10 col-sm-10 col-md-8 col-lg-6">
-            <div class="">
+            <div class="mb-4">
               <div class="form-group d-flex flex-column">
                 <input [(ngModel)]='user.nome' type="text" placeholder="*Nome: " class="w-75 m-auto rounded input-modal mb-3">
 
@@ -61,11 +78,9 @@
                 <input [(ngModel)]='user.senha' type="password" placeholder="*Confirme sua senha: " class="w-75 m-auto rounded input-modal mb-1">
               </div>
             </div>
+            <button type="button" class="btn btn-link link-light" data-bs-dismiss="modal">Cancelar</button>
+            <button (click)='cadastrar()' type="button" class="btn btn-primary">Cadastrar</button>
           </div>
-        </div>
-        <div class="modal-footer border-0 d-flex flex-column-reverse justify-content-center">
-          <button type="button" class="btn btn-link link-light" data-bs-dismiss="modal">Cancelar</button>
-          <button (click)='cadastrar()' type="button" class="btn btn-primary">Enviar</button>
         </div>
       </div>
     </div>
@@ -87,7 +102,7 @@
 
         <div class="modal-body d-flex justify-content-center">
           <div class="col-10 col-sm-10 col-md-8 col-lg-6">
-            <div class="">
+            <div class="mb-4">
               <div class="form-group d-flex flex-column">
 
                 <input [(ngModel)]='user.nome' type="text" placeholder="*Nome: " class="w-75 m-auto rounded input-modal mb-3">
@@ -98,11 +113,9 @@
 
               </div>
             </div>
+            <button type="button" class="btn btn-link link-light" data-bs-dismiss="modal">Cancelar</button>
+            <button (click)='entrar()' type="button" class="btn btn-primary" data-bs-dismiss="modal">Entrar</button>
           </div>
-        </div>
-        <div class="modal-footer border-0 d-flex flex-column-reverse justify-content-center">
-          <button type="button" class="btn btn-link link-light" data-bs-dismiss="modal">Cancelar</button>
-          <button (click)='entrar()' type="button" class="btn btn-primary" data-bs-dismiss="modal">Entrar</button>
         </div>
       </div>
     </div>
