@@ -5,7 +5,7 @@ nav , .login {
     font-family: 'Poppins', sans-serif;
 }
 
-h1 a {
+h1 {
     font-size: 1.6rem;
     font-weight: 300;
     font-family: 'Poppins', sans-serif;
@@ -35,10 +35,11 @@ p > a{
     text-decoration: none;
 }
 
-
 .user {
     cursor: default!important;
+}
 
+h1, .user{
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -47,3 +48,8 @@ p > a{
     user-select: none;
     /* O texto não ficará selecionável */
 }
+
+.navbar-toggler{
+    border: 1px solid #FCFF6F;
+}
+

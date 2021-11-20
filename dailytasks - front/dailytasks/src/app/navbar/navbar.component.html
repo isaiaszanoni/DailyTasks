@@ -1,10 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-preto">
-    <div class="container-fluid">
-        <h1>
-            <a class="navbar-brand nav text-amarelo ms-5" href="#">DailyTasks</a>
-        </h1>
+    <div class="container-fluid mt-2">
+        <h1 class="navbar-brand nav text-amarelo ms-5">DailyTasks</h1>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <span>
+          <img src="../../assets/img/icones/menu-aberto.png" style="height: 18px;">
+        </span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mb-2 ms-auto mb-lg-0">
@@ -28,7 +28,7 @@
 
           <!-- DROPDOWN USUARIO -->
 
-          <div class="dropdown dropstart " *ngIf="authService.logado() != false" >
+          <div class="dropdown dropstart" *ngIf="authService.logado() != false"  >
             <button class="btn text-cinza" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
               <img src="../../assets/img/icones/user.png" style="height: 22px;" alt="">
             </button>
@@ -40,7 +40,7 @@
                 <a routerLink="/tasks" class="text-cinza hover-amarelo">Minhas Tarefas</a>
               </li>
               <li class="dropdown-item bg-preto hover-amarelo">
-                <a (click)='authService.sair()' class="text-cinza hover-amarelo pointer-event">Sair</a>
+                <a (click)='authService.sair()' class="text-cinza hover-amarelo pointer-event">Sair<img src="../../assets/img/icones/logout.png" style="height: 18px; margin-left: 14px;" alt=""></a>
               </li>
             </ul>
           </div>
