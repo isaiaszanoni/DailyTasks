@@ -1,6 +1,5 @@
 package br.com.dailytasks.models;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -22,20 +22,19 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank
 	private String nome;
 	
 	@NotBlank
+	@Email
 	private String email;
 	
 	@NotBlank
 	private String senha;
-	
-	private String token;
+
 	
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
-	private List<Tarefas> myTasks = new ArrayList<>();
+	private List<Tarefas> myTasks;
 
 
 
@@ -46,7 +45,7 @@ public class Usuario {
 	public void setMyTasks(List<Tarefas> myTasks) {
 		this.myTasks = myTasks;
 	}
-
+//
 	public Long getId() {
 		return id;
 	}
@@ -77,14 +76,6 @@ public class Usuario {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-
-	public String getToken() {
-		return token;
-	}
-
-	public void setToken(String token) {
-		this.token = token;
 	}
 	
 	

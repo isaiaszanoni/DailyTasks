@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,8 +17,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.server.ResponseStatusException;
+
 
 import br.com.dailytasks.models.Usuario;
+import br.com.dailytasks.models.utilities.UserDTO;
 import br.com.dailytasks.repository.UsuarioRepository;
 import br.com.dailytasks.service.UsuarioService;
 
@@ -42,7 +46,7 @@ public class UsuarioController {
 			return ResponseEntity.status(200).body(objectList);
 		}
 	}
-
+	
 	@GetMapping("/{id}")
     public ResponseEntity<Usuario> getByIdUser(@PathVariable(value = "id") Long id) {
         Optional<Usuario> objectoUser = userRepository.findById(id);
@@ -55,8 +59,15 @@ public class UsuarioController {
     }
 	
 	@PostMapping("/login")
-	public ResponseEntity<Object> credentials(@Valid @RequestBody Usuario userLogin){
+	public ResponseEntity<Object> credentials(@Valid @RequestBody UserDTO userLogin){
 		Optional<?> objectOptional = userService.getLogin(userLogin);
+		/*
+		if (objectOptional.isPresent()) {
+			return ResponseEntity.status(200).body(objectOptional.get());
+		} else {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Erro na requisição ou usuario não credenciado!", null);
+
+		}*/
 		
 		if (objectOptional.isEmpty()) {
 			return ResponseEntity.status(400).build();
@@ -67,10 +78,10 @@ public class UsuarioController {
 	
 	@PostMapping("/register")
     public ResponseEntity<Object> newUser(@Valid @RequestBody Usuario newUser) {
-        Optional<Object> objectOptional = userService.saveUser(newUser);
+        Optional<?> objectOptional = userService.saveUser(newUser);
 
-        if (objectOptional.isEmpty()) {
-            return ResponseEntity.status(400).build();
+        if (objectOptional.isEmpty()) { 
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário existente!", null);
         } else {
             return ResponseEntity.status(201).body(objectOptional.get());
         }
@@ -78,8 +89,15 @@ public class UsuarioController {
 	
 	
 	@PutMapping("/update")
-	public ResponseEntity<Usuario> update(@Valid @RequestBody Usuario userUpdate){
-		return ResponseEntity.status(202).body(userRepository.save(userUpdate)); 
+	public ResponseEntity<Object> update(@Valid @RequestBody UserDTO userUpdate){
+		Optional<?> objetoAlterado = userService.alterarUsuario(userUpdate);
+
+		if (objetoAlterado.isPresent()) {
+			return ResponseEntity.status(200).body(objetoAlterado.get());
+		} else {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Id de usuario invalido!", null);
+		}
+	
 	}
 	
 	

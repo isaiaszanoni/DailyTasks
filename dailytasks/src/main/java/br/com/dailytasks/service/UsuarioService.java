@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.apache.commons.codec.binary.Base64;
 
 import br.com.dailytasks.models.Usuario;
+import br.com.dailytasks.models.utilities.UserDTO;
 import br.com.dailytasks.repository.UsuarioRepository;
 
 @Service
@@ -30,7 +31,7 @@ public class UsuarioService {
 	}
 
 
-	public Optional<?> getLogin(Usuario userLogin) {
+	public Optional<?> getLogin(UserDTO userLogin) {
 	    return repository.findByEmail(userLogin.getEmail()).map(usuarioExists -> {
 	        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 	
@@ -55,5 +56,18 @@ public class UsuarioService {
 	    
 	}
 	
+	
+	public Optional<?> alterarUsuario(UserDTO usuarioParaAlterar) {
+		return repository.findById(usuarioParaAlterar.getId()).map(usuarioExistente -> {
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+			String result = encoder.encode(usuarioParaAlterar.getSenha());
+
+			usuarioExistente.setNome(usuarioParaAlterar.getNome());
+			usuarioExistente.setSenha(result);
+			return Optional.ofNullable(repository.save(usuarioExistente));
+		}).orElseGet(() -> {
+			return Optional.empty();
+		});
+	}
 	
 }
