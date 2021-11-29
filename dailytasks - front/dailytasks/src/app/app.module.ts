@@ -13,6 +13,7 @@ import { TasksComponent } from './tasks/tasks.component';
 import { TaskEditComponent } from './edit/task-edit/task-edit.component';
 import { TaskDeleteComponent } from './delete/task-delete/task-delete.component';
 import { UsuarioDeleteComponent } from './delete/usuario-delete/usuario-delete.component';
+import { UsuarioEditComponent } from './edit/usuario-edit/usuario-edit.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { UsuarioDeleteComponent } from './delete/usuario-delete/usuario-delete.c
     TasksComponent,
     TaskEditComponent,
     TaskDeleteComponent,
-    UsuarioDeleteComponent
+    UsuarioDeleteComponent,
+    UsuarioEditComponent
   ],
   imports: [
     BrowserModule,
