@@ -34,7 +34,7 @@
             </button>
             <ul class="dropdown-menu bg-preto mt-5" aria-labelledby="dropdownMenuButton1">
               <li>
-                <a class="dropdown-item bg-preto text-cinza hover-amarelo" href="#">Editar cadastro</a>
+                <a class="dropdown-item bg-preto text-cinza hover-amarelo" [routerLink]="['/usuario-delete', user.id]">Editar cadastro</a>
               </li>
               <li  class="dropdown-item bg-preto">
                 <a routerLink="/tasks" class="text-cinza hover-amarelo">Minhas Tarefas</a>

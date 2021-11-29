@@ -37,9 +37,9 @@ export class TaskDeleteComponent implements OnInit {
   }
 
   apagar() {
-   this.taskService.deleteTask(this.idtask).subscribe(()=>{
-     alert('Postagem apagada com sucesso!')
-     this.router.navigate(['/tasks'])
+    this.taskService.deleteTask(this.idtask).subscribe(()=>{
+    alert('Postagem apagada com sucesso!')
+    this.router.navigate(['/tasks'])
    })
   }
 

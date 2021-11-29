@@ -12,7 +12,7 @@ import { AuthService } from '../service/auth.service';
 export class NavbarComponent implements OnInit {
 
   // para Login e para Cadastro
-  user: Usuario = new Usuario 
+  user: Usuario = new Usuario
 
   // armazena o valor do input de senha para gerar evento
   confirmarSenha: string
@@ -22,19 +22,18 @@ export class NavbarComponent implements OnInit {
     public router: Router
   ) { }
 
-  ngOnInit(){
-    window.scroll(0,0)
+  ngOnInit() {
+    window.scroll(0, 0)
   }
 
   confirmSenha(event: any) {
-    this.confirmarSenha = event.target.value 
+    this.confirmarSenha = event.target.value
   }
 
   cadastrar() {
-    
-    if(this.user.senha != this.confirmarSenha){
+    if (this.user.senha != this.confirmarSenha) {
       alert('As senhas não correspondem!')
-    }else {
+    } else {
       this.authService.register(this.user).subscribe((resp: Usuario) => {
         this.user = resp
         this.router.navigate(['/home'])
@@ -44,18 +43,21 @@ export class NavbarComponent implements OnInit {
   }
 
   entrar() {
-    this.authService.login(this.user).subscribe((resp: Usuario) =>{
+    this.authService.login(this.user).subscribe((resp: Usuario) => {
       this.user = resp
 
       environment.token = this.user.token
       environment.nome = this.user.nome
       environment.id = this.user.id
 
-
-      this.router.navigate(['/tasks'])
-    }, err =>{
-      if(err.status == 500){
+      if (environment.token == null || environment.id == null) {
         alert('Usuário ou senha incorretos!')
+        this.authService.flag = false
+      } else {
+        this.authService.flag = true
+        this.router.navigate(['/tasks'])
+        console.log(this.user.token)
+        
       }
     })
   }

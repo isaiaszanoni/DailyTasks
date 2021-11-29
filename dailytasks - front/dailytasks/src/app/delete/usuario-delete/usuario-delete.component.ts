@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, RouterLinkActive } from '@angular/router';
+import { Usuario } from 'src/app/model/Usuario';
+import { AuthService } from 'src/app/service/auth.service';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-usuario-delete',
@@ -7,9 +11,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsuarioDeleteComponent implements OnInit {
 
-  constructor() { }
+  user: Usuario = new Usuario()
+  idUser: number
 
-  ngOnInit(): void {
+  constructor(
+    private authService : AuthService,
+    private router : Router,
+    private route : ActivatedRoute
+
+  ) { }
+
+  ngOnInit() {
+    if (environment.token == '') {
+      this.router.navigate(['/home'])
+    }
+
+    this.idUser = this.route.snapshot.params['id']
+    
+  }
+
+  findUserById(id: number) {
+    this.authService.getByIdUsuario(id).subscribe((resp: Usuario) =>{
+      this.user = resp
+    })
+  }
+
+  apagarUsuario() {
+    this.authService.deleteUsuario(this.idUser).subscribe(() =>{
+      alert('Seu cadastro foi apagado com sucesso! Volte quando quiser!')
+      this.authService.sair()
+      this.router.navigate(['/home'])
+    })
   }
 
 }
