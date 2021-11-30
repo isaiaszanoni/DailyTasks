@@ -14,6 +14,7 @@ import { TaskEditComponent } from './edit/task-edit/task-edit.component';
 import { TaskDeleteComponent } from './delete/task-delete/task-delete.component';
 import { UsuarioDeleteComponent } from './delete/usuario-delete/usuario-delete.component';
 import { UsuarioEditComponent } from './edit/usuario-edit/usuario-edit.component';
+import { LoginComponent } from './navbar/login/login.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { UsuarioEditComponent } from './edit/usuario-edit/usuario-edit.component
     TaskEditComponent,
     TaskDeleteComponent,
     UsuarioDeleteComponent,
-    UsuarioEditComponent
+    UsuarioEditComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

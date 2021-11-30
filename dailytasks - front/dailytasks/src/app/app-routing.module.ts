@@ -1,3 +1,4 @@
+import { LoginComponent } from './navbar/login/login.component';
 import { UsuarioEditComponent } from './edit/usuario-edit/usuario-edit.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path: 'task-edit/:id', component: TaskEditComponent},
   {path: 'task-delete/:id', component: TaskDeleteComponent},
   {path: 'usuario-edit/:id', component: UsuarioEditComponent},
-  {path: 'usuario-delete/:id', component: UsuarioDeleteComponent}
+  {path: 'usuario-delete/:id', component: UsuarioDeleteComponent},
+  {path: 'navbar/login', component: LoginComponent}
 ];
 
 @NgModule({

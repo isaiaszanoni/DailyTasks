@@ -19,8 +19,8 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     public authService: AuthService,
-    public router: Router
-  ) { }
+    public router: Router  
+    ) { }
 
   ngOnInit(): void {
     window.scroll(0, 0)
@@ -36,30 +36,10 @@ export class NavbarComponent implements OnInit {
     } else {
       this.authService.register(this.user).subscribe((resp: Usuario) => {
         this.user = resp
-        this.router.navigate(['/home'])
+        this.router.navigate(['/navbar/login'])
         alert('Usuário cadastrado com sucesso!')
       })
     }
-  }
-
-  entrar() {
-    this.authService.login(this.user).subscribe((resp: Usuario) => {
-      this.user = resp
-
-      environment.token = this.user.token
-      environment.nome = this.user.nome
-      environment.id = this.user.id
-
-      if (environment.token == null || environment.id == null) {
-        alert('Usuário ou senha incorretos!')
-        this.authService.flag = false
-      } else {
-        this.authService.flag = true
-        this.router.navigate(['/tasks'])
-        console.log(this.user.token)
-        
-      }
-    })
   }
 
 

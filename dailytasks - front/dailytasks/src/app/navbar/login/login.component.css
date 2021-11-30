@@ -1,0 +1,27 @@
+.container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 70vh;
+   
+}
+
+.btn-login{
+    text-align: center;
+    margin-top: 1.2rem;
+}
+
+button{
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.input-modal {
+    background-color: rgba(93, 93, 93, 0.205);
+    color: #fdfdfd;
+    border: 1px solid #696969;
+    height: 38px;
+    padding-left: 15px;
+}
+

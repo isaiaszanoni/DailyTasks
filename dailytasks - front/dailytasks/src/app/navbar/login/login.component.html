@@ -1,0 +1,29 @@
+<div class="content bg-preto py-3" style="height: 90vh">
+    <div class="container">
+        <h3 class="text-branco text-center">Faça login</h3>
+        <p class="text-branco">
+            Ou clique <a class="text-amarelo m-0 p-0 btn" data-bs-dismiss="modal" data-bs-toggle="modal"
+                data-bs-target="#cadastrarModal">
+                 aqui 
+            </a>
+            para se cadastrar!
+        </p>
+            <div class="col-10 col-sm-10 col-md-8 col-lg-6">
+                <div class="mt-4">
+                    <div class="form-group d-flex flex-column">
+
+                        <input [(ngModel)]='user.email' type="email" placeholder="*Email: "
+                            class="w-75 m-auto rounded input-modal mb-3">
+    
+                        <input [(ngModel)]='user.senha' type="password" placeholder="*Senha: "
+                            class="w-75 m-auto rounded input-modal">
+    
+                    </div>
+                </div>
+                <div class="btn-login">
+                    <button routerLink="/home" type="button" class="btn btn-link link-light">Cancelar</button>
+                    <button (click)='entrar()' type="button" class="btn btn-primary" data-bs-dismiss="modal">Entrar</button>
+                </div>
+            </div>
+    </div>
+</div>
