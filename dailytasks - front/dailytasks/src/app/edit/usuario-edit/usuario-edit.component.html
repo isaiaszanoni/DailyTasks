@@ -1,24 +1,7 @@
-<div class="modal-body d-flex justify-content-center align-items-center bg-preto">
-    <div class="col-10 col-sm-10 col-md-8 col-lg-6">
-      <div class="mb-4">
-        <div class="form-group d-flex flex-column">
-
-
-
-        </div>
-        <div class="buttons">
-            
-        </div>
-    </div>
-</div>
-  </div>
-
-
-
-  <div class="container-fluid bg-preto" style="min-height: 90vh">
+<div class="container-fluid bg-preto" style="min-height: 90vh">
     <div class="row">
 
-        <h2 class="text-branco text-md-center text-lg-center mb-3 myTasks">Editar Cadastro</h2>
+        <h2 class="text-branco text-md-center text-lg-center mb-3 myTasks">Editar cadastro</h2>
 
         <main class="d-flex flex-wrap-reverse">
 
@@ -30,22 +13,27 @@
                     <div class="card-body">
                         <div class="form-group d-flex flex-column">
 
-                            <input [(ngModel)]='usuario.nome' type="text" placeholder="*Nome: " class="w-75 m-auto rounded input-modal mb-3">
+                            <input [(ngModel)]='usuario.nome' type="text" placeholder="*Nome: "
+                                class="w-75 m-auto rounded input-modal mb-3">
 
-                            <input [(ngModel)]='usuario.email' type="email" placeholder="*Email: " class="w-75 m-auto rounded input-modal mb-3">
-                       
-                            <input (input)='confirmSenha($event)' type="password" placeholder="*Senha: " class="w-75 m-auto rounded input-modal mb-3">
-                            
-                            <input [(ngModel)]='usuario.senha' type="password" placeholder="*Confirme sua senha: " class="w-75 m-auto rounded input-modal mb-1">
+                            <input [(ngModel)]='usuario.email' type="email" placeholder="*Email: "
+                                class="w-75 m-auto rounded input-modal mb-3">
+
+                            <input (input)='confirmSenha($event)' type="password" placeholder="*Senha: "
+                                class="w-75 m-auto rounded input-modal mb-3">
+
+                            <input [(ngModel)]='usuario.senha' type="password" placeholder="*Confirme sua senha: "
+                                class="w-75 m-auto rounded input-modal mb-1">
 
                         </div>
                     </div>
-                    <span class="text-center">Excluir sua conta? Clique 
-                        <a class="text-amarelo" routerLink="/usuario-delete/{{ usuario.id }}" >aqui</a>
+                    <span class="text-center">Excluir sua conta? Clique
+                        <a class="text-amarelo" routerLink="/usuario-delete/{{ usuario.id }}">aqui</a>
                     </span>
                     <div class="buttons">
-                        <button routerLink="/tasks" type="button" class="btn btn-success mt-3" data-bs-dismiss="modal">Cancelar</button>
-                        <button (click)='atualizar()' type="button" class="btn btn-primary ms-3 mt-3">Atualizar</button>                        
+                        <button routerLink="/tasks" type="button" class="btn btn-success mt-3"
+                            data-bs-dismiss="modal">Cancelar</button>
+                        <button (click)='atualizar()' type="button" class="btn btn-primary ms-3 mt-3">Atualizar</button>
                     </div>
                 </div>
             </div>

@@ -11,11 +11,13 @@ import { Usuario } from 'src/app/model/Usuario';
 })
 export class UsuarioEditComponent implements OnInit {
 
-  usuario: Usuario = new Usuario
-  user: Usuario = new Usuario()
+  usuario: Usuario = new Usuario //faz link com a edit
+  
+  user: Usuario = new Usuario() //faz link com a nav
 
   confirmarSenha: string
 
+  nome = environment.nome
 
   constructor(
     private authService: AuthService,
@@ -26,12 +28,18 @@ export class UsuarioEditComponent implements OnInit {
 
     let id = environment.id
     this.findByIdUser(id)
+
+    this.atualizarNome()
   }
 
   findByIdUser(id: number){
     this.authService.getByIdUsuario(id).subscribe((resp: Usuario)=>{
       this.usuario = resp
     })
+  }
+
+  atualizarNome(){
+    return environment.nome
   }
 
   confirmSenha(event: any) {
@@ -41,13 +49,12 @@ export class UsuarioEditComponent implements OnInit {
   atualizar(){
       console.log(this.usuario.nome);
       
-   this.authService.putUsuario(this.usuario).subscribe((resp: Usuario) => {
+    this.authService.putUsuario(this.usuario).subscribe((resp: Usuario) => {
      this.usuario = resp
-     this.router.navigate(['/tasks'])
+
+     this.authService.sair()
      alert('Perfil atualizado!')
      console.log(this.usuario.nome);
-     
-     this.usuario.nome = this.authService.nome
       })
     }
 

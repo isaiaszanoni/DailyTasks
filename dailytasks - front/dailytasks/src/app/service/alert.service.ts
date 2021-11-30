@@ -21,4 +21,5 @@ export class AlertService {
   success(message: string){
     this.alert(message, 'success')
   }
+
 }

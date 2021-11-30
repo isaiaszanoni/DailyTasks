@@ -29,9 +29,9 @@ import { AlertsComponent } from './alerts/alerts.component';
     TaskEditComponent,
     TaskDeleteComponent,
     UsuarioDeleteComponent,
-    UsuarioEditComponent,
     LoginComponent,
-    AlertsComponent
+    AlertsComponent,
+    UsuarioEditComponent
   ],
   imports: [
     BrowserModule,
