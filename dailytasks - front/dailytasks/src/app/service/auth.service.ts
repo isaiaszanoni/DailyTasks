@@ -39,6 +39,10 @@ export class AuthService {
     return this.http.delete(`https://daily-dailytasks.herokuapp.com/api/users/${id}`)
   }
 
+  putUsuario(user: Usuario): Observable<Usuario>{
+    return this.http.put<Usuario>('https://daily-dailytasks.herokuapp.com/api/users/update/', user)
+  }
+
   logado() {
     let ok = false
     if (this.flag == true) {

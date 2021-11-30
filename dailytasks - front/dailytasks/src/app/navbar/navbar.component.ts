@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit {
     public router: Router
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     window.scroll(0, 0)
   }
 
@@ -61,5 +61,6 @@ export class NavbarComponent implements OnInit {
       }
     })
   }
+
 
 }

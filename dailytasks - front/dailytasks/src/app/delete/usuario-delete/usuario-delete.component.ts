@@ -27,7 +27,7 @@ export class UsuarioDeleteComponent implements OnInit {
     }
 
     this.idUser = this.route.snapshot.params['id']
-    
+    this.findUserById(this.idUser)
   }
 
   findUserById(id: number) {

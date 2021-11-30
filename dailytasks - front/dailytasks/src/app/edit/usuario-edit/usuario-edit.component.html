@@ -30,24 +30,22 @@
                     <div class="card-body">
                         <div class="form-group d-flex flex-column">
 
-                            <label for="tarefa" class="mt-2 me-3">Nome:</label>
-                            <input [(ngModel)]='user.nome' type="text" placeholder="*Nome: " class="w-75 m-auto rounded input-modal mb-3">
+                            <input [(ngModel)]='usuario.nome' type="text" placeholder="*Nome: " class="w-75 m-auto rounded input-modal mb-3">
 
-
-                            <label for="descricao">Email:</label>
-                            <input [(ngModel)]='user.email' type="email" placeholder="*Email: " class="w-75 m-auto rounded input-modal mb-3">
+                            <input [(ngModel)]='usuario.email' type="email" placeholder="*Email: " class="w-75 m-auto rounded input-modal mb-3">
                        
-                            <label for="senha">Senha:</label>
-                            <input [(ngModel)]='user.senha' type="password" placeholder="*Confirme sua senha: " class="w-75 m-auto rounded input-modal mb-1">
-
-                            <label for="senha">Confirmar senha:</label>
                             <input (input)='confirmSenha($event)' type="password" placeholder="*Senha: " class="w-75 m-auto rounded input-modal mb-3">
+                            
+                            <input [(ngModel)]='usuario.senha' type="password" placeholder="*Confirme sua senha: " class="w-75 m-auto rounded input-modal mb-1">
 
                         </div>
                     </div>
+                    <span class="text-center">Excluir sua conta? Clique 
+                        <a class="text-amarelo" routerLink="/usuario-delete/{{ usuario.id }}" >aqui</a>
+                    </span>
                     <div class="buttons">
-                        <button type="button" class="btn btn-success mt-3" data-bs-dismiss="modal">Cancelar</button>
-                        <button (click)='atualizar()' type="button" class="btn btn-primary ms-3 mt-3">Atualizar</button>
+                        <button routerLink="/tasks" type="button" class="btn btn-success mt-3" data-bs-dismiss="modal">Cancelar</button>
+                        <button (click)='atualizar()' type="button" class="btn btn-primary ms-3 mt-3">Atualizar</button>                        
                     </div>
                 </div>
             </div>
