@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment.prod';
 import { Usuario } from '../model/Usuario';
 import { AuthService } from '../service/auth.service';
 
@@ -23,6 +24,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     window.scroll(0, 0)
+    this.authService.nomeUsuario()
   }
 
   confirmSenha(event: any) {
