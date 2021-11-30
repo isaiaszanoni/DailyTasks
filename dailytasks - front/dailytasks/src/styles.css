@@ -1,6 +1,10 @@
 
 /* Cores Principais */
 
+body{
+    padding-right: 0px !important;
+}
+
 .bg-preto{
     background-color: #1F2123 !important;
 }

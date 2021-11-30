@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { AuthService } from '../service/auth.service';
+import { AlertService } from '../service/alert.service';
 
 @Component({
   selector: 'app-tasks',
@@ -24,7 +25,8 @@ export class TasksComponent implements OnInit {
   constructor(
     public authService: AuthService,
     private router: Router,
-    private taskService: TaskService
+    private taskService: TaskService,
+    private alert: AlertService
   ) { }
 
   ngOnInit() {
@@ -40,7 +42,6 @@ export class TasksComponent implements OnInit {
 
   }
 
-
   findByIdUser() {
     this.authService.getByIdUsuario(this.idUser).subscribe((resp: Usuario) => {
       this.user = resp
@@ -53,7 +54,7 @@ export class TasksComponent implements OnInit {
 
     this.taskService.postTask(this.tarefa).subscribe((resp: Tarefas) => {
       this.tarefa = resp
-      alert('Parabéns, sua tarefa foi registrada!!')
+      this.alert.success('Parabéns, sua tarefa foi registrada!!')
       this.tarefa = new Tarefas()
       this.findByIdUser()
     })
