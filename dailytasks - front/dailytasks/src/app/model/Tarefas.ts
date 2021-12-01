@@ -6,4 +6,6 @@ export class Tarefas{
    public tarefa: string
    public descricao: string
    public usuario: Usuario
+   public cor: string
+   public finalizada: boolean
 }

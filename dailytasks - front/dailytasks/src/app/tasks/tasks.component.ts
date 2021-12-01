@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment.prod';
 import { AuthService } from '../service/auth.service';
 import { AlertService } from '../service/alert.service';
 
+
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
@@ -22,11 +23,13 @@ export class TasksComponent implements OnInit {
   user: Usuario = new Usuario()
   idUser = environment.id
 
+  button: string
+
   constructor(
     public authService: AuthService,
     private router: Router,
     private taskService: TaskService,
-    private alert: AlertService
+    private alert: AlertService,
   ) { }
 
   ngOnInit() {
@@ -34,8 +37,6 @@ export class TasksComponent implements OnInit {
     if (environment.token == '') {
       this.router.navigate(['/home'])
     }
-
-    console.log(this.idUser);
 
     this.findByIdUser()
     this.taskService.getAllTasks()
@@ -52,22 +53,32 @@ export class TasksComponent implements OnInit {
     this.user.id = this.idUser
     this.tarefa.usuario = this.user
 
-    this.taskService.postTask(this.tarefa).subscribe((resp: Tarefas) => {
-      this.tarefa = resp
-      this.alert.success('Parabéns, sua tarefa foi registrada!!')
-      this.tarefa = new Tarefas()
-      this.findByIdUser()
-    })
+    if (this.tarefa.cor != null) {
+      this.taskService.postTask(this.tarefa).subscribe((resp: Tarefas) => {
+        this.tarefa = resp
+        this.alert.success('Parabéns, sua tarefa foi registrada!!')
+        this.tarefa = new Tarefas()
+        this.findByIdUser()
+        
+      })
+    } else {
+      this.alert.success("Escolha uma cor!")
+    }
   }
 
-  findByNameTasks(){
-    if(this.pesquisa == ''){
+  findByNameTasks() {
+    if (this.pesquisa == '') {
       this.findByIdUser()
-    }else{
-      this.taskService.getAllTasksByTitle(this.pesquisa).subscribe((resp: Tarefas[])=>{
+    } else {
+      this.taskService.getAllTasksByTitle(this.pesquisa).subscribe((resp: Tarefas[]) => {
         this.user.myTasks = resp
       })
     }
+  }
+
+  verificaCor() {
+    
+    
   }
 
 }

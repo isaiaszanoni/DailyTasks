@@ -39,3 +39,30 @@ body{
     height: 38px;
     padding-left: 15px;
 }
+
+.task-color {
+    min-width: 30px;
+    height: 30px;
+    margin-left: 7px;
+
+}
+
+.bg-task-amarelo {
+    background-color: #FDFFAB;
+}
+
+.bg-task-cinza {
+    background-color: #E5E5E5;
+}
+
+.bg-task-azul {
+    background-color: #6FC2FF;
+}
+
+.bg-task-finalizada {
+    background-color: #4F4F4F;
+}
+
+.bg-task-verde {
+    background-color: #71FF6F;
+}

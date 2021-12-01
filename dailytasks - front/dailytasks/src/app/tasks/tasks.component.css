@@ -30,6 +30,10 @@ img.task-icon {
     min-width: 180px;
 }
 
+.task-title {
+    width: 83%;
+}
+
 
 @media only screen and (max-width:568px){
 
