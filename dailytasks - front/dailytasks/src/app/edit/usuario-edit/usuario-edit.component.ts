@@ -12,7 +12,7 @@ import { Usuario } from 'src/app/model/Usuario';
 export class UsuarioEditComponent implements OnInit {
 
   usuario: Usuario = new Usuario //faz link com a edit
-  
+
   user: Usuario = new Usuario() //faz link com a nav
 
   confirmarSenha: string
@@ -24,38 +24,36 @@ export class UsuarioEditComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit(){
+  ngOnInit() {
 
     let id = environment.id
     this.findByIdUser(id)
 
-    this.atualizarNome()
   }
 
-  findByIdUser(id: number){
-    this.authService.getByIdUsuario(id).subscribe((resp: Usuario)=>{
+  findByIdUser(id: number) {
+    this.authService.getByIdUsuario(id).subscribe((resp: Usuario) => {
       this.usuario = resp
     })
   }
 
-  atualizarNome(){
-    return environment.nome
-  }
-
   confirmSenha(event: any) {
-    this.confirmarSenha = event.target.value 
+    this.confirmarSenha = event.target.value
   }
 
-  atualizar(){
-      console.log(this.usuario.nome);
-      
-    this.authService.putUsuario(this.usuario).subscribe((resp: Usuario) => {
-     this.usuario = resp
+  atualizar() {
+    console.log(this.usuario.nome);
 
-     this.authService.sair()
-     alert('Perfil atualizado!')
-     console.log(this.usuario.nome);
+    if (this.usuario.senha != this.confirmarSenha) {
+      alert('As senhas não correspondem!')
+    } else {
+      this.authService.putUsuario(this.usuario).subscribe((resp: Usuario) => {
+        this.usuario = resp
+
+        this.authService.sair()
+        alert('Perfil atualizado! Por favor, logar novamente.')
+        console.log(this.usuario.nome);
       })
     }
-
+  }
 }
