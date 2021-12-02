@@ -21,9 +21,35 @@
                             <textarea [(ngModel)]='task.descricao' type="text" class="me-3 input-modal mt-2"></textarea>
                         </div>
                     </div>
+
+                    <div>
+                        <h6 class="card-title ms-3 my-3">Cor da Tarefa:</h6>
+                        <div name="cor" id="cor">
+                            <ul class="d-flex flex-nowrap justify-content-evenly">
+                                <li class="d-flex flex-nowrap align-items-center">
+                                    <input [(ngModel)]="task.cor" type="radio" name="cor" value="cinza" class="d-inline">
+                                    <div class="rounded-1 task-color bg-task-cinza"></div>
+                                </li>
+                                <li class="d-flex flex-nowrap align-items-center">
+                                    <input [(ngModel)]="task.cor" type="radio" name="cor" value="amarelo" >
+                                    <div class="rounded-1 task-color bg-task-amarelo"></div>
+                                </li>
+                                <li class="d-flex flex-nowrap align-items-center">
+                                    <input [(ngModel)]="task.cor" type="radio" name="cor" value="verde" >
+                                    <div class="rounded-1 task-color bg-task-verde"></div>
+                                </li>
+                                <li class="d-flex flex-nowrap align-items-center">
+                                    <input [(ngModel)]="task.cor" type="radio" name="cor" value="azul" >
+                                    <div class="rounded-1 task-color bg-task-azul"></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
                     <div class="card-footer">
                         <button type="button" class="btn btn-link text-decoration-none" data-bs-dismiss="modal"
                             routerLink='/tasks'>Cancelar</button>
+                        <button type="button" class="btn btn-primary" *ngIf='task.cor == null' alt="Escolha uma cor" disabled>Salvar</button>
                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
                             (click)='atualizar()'>Salvar</button>
                     </div>

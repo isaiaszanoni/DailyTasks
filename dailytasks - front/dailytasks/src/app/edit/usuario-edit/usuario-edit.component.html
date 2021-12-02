@@ -1,0 +1,43 @@
+<div class="container-fluid bg-preto" style="min-height: 90vh">
+    <div class="row">
+
+        <h2 class="text-branco text-md-center text-lg-center mb-3 myTasks">Editar cadastro</h2>
+
+        <main class="d-flex flex-wrap-reverse">
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center flex-wrap">
+                <div class="card bg-dark text-branco col-12 col-sm-12 col-md-8 col-lg-8 col-xl-7">
+                    <div class="card-header">
+                        <h5 class="card-title">Seus dados:</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group d-flex flex-column">
+
+                            <input [(ngModel)]='usuario.nome' type="text" placeholder="*Nome: "
+                                class="w-75 m-auto rounded input-modal mb-3">
+
+                            <input [(ngModel)]='usuario.email' type="email" placeholder="*Email: "
+                                class="w-75 m-auto rounded input-modal mb-3">
+
+                            <input (input)='confirmSenha($event)' type="password" placeholder="*Senha: "
+                                class="w-75 m-auto rounded input-modal mb-3">
+
+                            <input [(ngModel)]='usuario.senha' type="password" placeholder="*Confirme sua senha: "
+                                class="w-75 m-auto rounded input-modal mb-1">
+
+                        </div>
+                    </div>
+                    <span class="text-center">Excluir sua conta? Clique
+                        <a class="text-amarelo" routerLink="/usuario-delete/{{ usuario.id }}">aqui</a>
+                    </span>
+                    <div class="buttons">
+                        <button routerLink="/tasks" type="button" class="btn btn-success mt-3"
+                            data-bs-dismiss="modal">Cancelar</button>
+                        <button (click)='atualizar()' type="button" class="btn btn-primary ms-3 mt-3">Atualizar</button>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+</div>

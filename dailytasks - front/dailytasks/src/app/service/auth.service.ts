@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   nome = environment.nome
+  
+  flag = false // Usuario logado
 
   constructor(
     private http: HttpClient,
@@ -33,9 +35,17 @@ export class AuthService {
     return this.http.get<Usuario>(`https://daily-dailytasks.herokuapp.com/api/users/${id}`)
   }
 
+  deleteUsuario(id: number) {
+    return this.http.delete(`https://daily-dailytasks.herokuapp.com/api/users/${id}`)
+  }
+
+  putUsuario(user: Usuario): Observable<Usuario>{
+    return this.http.put<Usuario>('https://daily-dailytasks.herokuapp.com/api/users/update/', user)
+  }
+
   logado() {
     let ok = false
-    if (environment.token != '') {
+    if (this.flag == true) {
       ok = true
     }
     return ok
@@ -46,6 +56,7 @@ export class AuthService {
     environment.id = 0,
     environment.email = '',
     environment.nome = '',
+    this.flag = false,
     this.router.navigate(['/home'])
   }
 

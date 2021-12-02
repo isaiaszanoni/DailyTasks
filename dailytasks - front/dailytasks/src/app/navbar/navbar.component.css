@@ -16,11 +16,6 @@ h1 {
     text-decoration: none;
 }
 
-a.hover-amarelo:hover{
-    color: #FCFF6F !important;
-    
-}
-
 .login:hover {
     background-color: #50505070;
     border-color: #FCFF6F !important; 

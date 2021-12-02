@@ -2,6 +2,7 @@ import { HttpClientModule } from '@angular/common/http'
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +14,9 @@ import { TasksComponent } from './tasks/tasks.component';
 import { TaskEditComponent } from './edit/task-edit/task-edit.component';
 import { TaskDeleteComponent } from './delete/task-delete/task-delete.component';
 import { UsuarioDeleteComponent } from './delete/usuario-delete/usuario-delete.component';
+import { UsuarioEditComponent } from './edit/usuario-edit/usuario-edit.component';
+import { LoginComponent } from './navbar/login/login.component';
+import { AlertsComponent } from './alerts/alerts.component';
 
 @NgModule({
   declarations: [
@@ -24,13 +28,17 @@ import { UsuarioDeleteComponent } from './delete/usuario-delete/usuario-delete.c
     TasksComponent,
     TaskEditComponent,
     TaskDeleteComponent,
-    UsuarioDeleteComponent
+    UsuarioDeleteComponent,
+    LoginComponent,
+    AlertsComponent,
+    UsuarioEditComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

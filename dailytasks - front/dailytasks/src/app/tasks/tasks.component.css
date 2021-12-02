@@ -30,6 +30,20 @@ img.task-icon {
     min-width: 180px;
 }
 
+.task-title {
+    width: 83%;
+}
+
+.task-dropdown {
+    font-size: 1.5rem;
+    text-decoration: none;
+    align-items: center;
+}
+
+.btn:focus {
+    box-shadow: none;
+}
+
 
 @media only screen and (max-width:568px){
 
