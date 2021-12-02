@@ -25,34 +25,30 @@
             <div class="min-col col-12 col-sm-12 col-md-9 col-lg-9 d-flex justify-content-center"
                 *ngFor="let item of user.myTasks">
 
-
-                <div class="card col-11 col-md-9 col-lg-9 d-flex bg-task-{{ item.cor }} m-4">
+                <div class="card col-11 col-md-9 col-lg-9 d-flex bg-task-{{ item.cor }} m-4 ">
                     <div class="card-header bg-task-{{ item.cor }} no-border d-flex justify-content-between">
                         <h4 class="card-title task-title">{{ item.tarefa }}</h4>
                         <input type="checkbox" name="" class="form-check-input">
                     </div>
-                    <div class="card-body p-0 bg-task-{{ item.cor }}">
-                        <div class="card-text ps-3">
+                    <div class="d-flex justify-content-between">
+                        <div class="card-text ps-3 bg-task-{{ item.cor }}">
                             <p>
                                 <span>{{ item.descricao }}</span>
                             </p>
                         </div>
-                    </div>
-                    <div class="text-sm no-border">
-                        <ul class="list-group-horizontal d-flex justify-content-around p-0 mb-1">
-                            <li class="list-inline-item">
-                                <button class="btn" [routerLink]="['/task-edit', item.id_tarefa]">
-                                    <img class=" task-icon" src="../../assets/img/icones/editing-preto.png" alt="">
-                                    Editar
-                                </button>
-                            </li>
-                            <li class="list-inline-item">
-                                <button class="btn" [routerLink]="['/task-delete', item.id_tarefa]">
-                                    <img class="task-icon" src="../../assets/img/icones/trash.png" alt="">
-                                    Excluir
-                                </button>
-                            </li>
-                        </ul>
+
+                        <div class="dropstart">
+                            <button class="btn task-dropdown text-dark me-1" href="#" role="button" id="dropdownMenuLink"
+                                data-bs-toggle="dropdown" aria-expanded="false">...</button>
+
+                            <ul class="dropdown-menu bg-preto" aria-labelledby="dropdownMenuLink">
+                                <li><a class="dropdown-item bg-preto text-cinza hover-amarelo" [routerLink]="['/task-edit', item.id_tarefa]">Editar Task</a>
+                                </li>
+                                <li><a class="dropdown-item bg-preto text-cinza hover-amarelo" [routerLink]="['/task-delete', item.id_tarefa]">Excluir Task</a>
+                                </li>
+                            </ul>
+                        </div>
+
                     </div>
                 </div>
 
@@ -86,37 +82,41 @@
 
                     <label>Descrição:</label>
                     <textarea [(ngModel)]='tarefa.descricao' type="text" class="me-3 input-modal mt-2"></textarea>
-                    
+
                     <div>
                         <h6 class="card-subtitle my-3">Cor da Tarefa:</h6>
-                        <div name="cor" id="cor" >
+                        <div name="cor" id="cor">
                             <ul class="d-flex flex-nowrap justify-content-evenly">
                                 <li class="d-flex flex-nowrap align-items-center">
-                                    <input [(ngModel)]="tarefa.cor" type="radio" name="cor" value="cinza" class="d-inline">
+                                    <input [(ngModel)]="tarefa.cor" type="radio" name="cor" value="cinza"
+                                        class="d-inline">
                                     <div class="rounded-1 task-color bg-task-cinza"></div>
                                 </li>
                                 <li class="d-flex flex-nowrap align-items-center">
-                                    <input [(ngModel)]="tarefa.cor" type="radio" name="cor" value="amarelo" >
+                                    <input [(ngModel)]="tarefa.cor" type="radio" name="cor" value="amarelo">
                                     <div class="rounded-1 task-color bg-task-amarelo"></div>
                                 </li>
                                 <li class="d-flex flex-nowrap align-items-center">
-                                    <input [(ngModel)]="tarefa.cor" type="radio" name="cor" value="verde" >
+                                    <input [(ngModel)]="tarefa.cor" type="radio" name="cor" value="verde">
                                     <div class="rounded-1 task-color bg-task-verde"></div>
                                 </li>
                                 <li class="d-flex flex-nowrap align-items-center">
-                                    <input [(ngModel)]="tarefa.cor" type="radio" name="cor" value="azul" >
+                                    <input [(ngModel)]="tarefa.cor" type="radio" name="cor" value="azul">
                                     <div class="rounded-1 task-color bg-task-azul"></div>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-link text-decoration-none" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" (click)='publicar()' *ngIf='tarefa.cor == null' alt="Escolha uma cor" disabled>Salvar</button>
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)='publicar()' *ngIf='tarefa.cor != null'>Salvar</button>
+                <button type="button" class="btn btn-link text-decoration-none"
+                    data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" (click)='publicar()' *ngIf='tarefa.cor == null'
+                    alt="Escolha uma cor" disabled>Salvar</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)='publicar()'
+                    *ngIf='tarefa.cor != null'>Salvar</button>
             </div>
         </div>
     </div>

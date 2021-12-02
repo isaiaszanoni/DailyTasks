@@ -25,6 +25,10 @@ body{
     border-color: #696969 !important;
 }
 
+a.hover-amarelo:hover{
+    color: #FCFF6F !important;
+    
+}
 
 .bg-blur {
     background-color: rgba(141, 141, 141, 0.15);  

@@ -33,10 +33,10 @@ export class TasksComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
     if (environment.token == '') {
       this.router.navigate(['/home'])
     }
+    
 
     this.findByIdUser()
     this.taskService.getAllTasks()
