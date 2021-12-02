@@ -25,3 +25,8 @@ button{
     padding-left: 15px;
 }
 
+.btn-visitante{
+    background-color: transparent;
+    border: none;
+}
+

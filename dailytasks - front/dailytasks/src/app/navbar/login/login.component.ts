@@ -10,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  
+  //info visitantes
+  
+  email_visitante: string = "visitante@email.com"
+  senha_visitante: string = "visitante"
 
   user: Usuario = new Usuario
 
@@ -20,6 +24,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    
   }
 
   entrar() {
@@ -37,9 +42,19 @@ export class LoginComponent implements OnInit {
         this.authService.flag = true
         this.router.navigate(['/tasks'])
         console.log(this.user.token)
-        
       }
     })
   }
+
+  logarVisitante(){
+    this.user.email = this.email_visitante
+    this.user.senha = this.senha_visitante
+
+    this.authService.login(this.user).subscribe((resp: Usuario) => {
+      this.user = resp
+      
+    })
+  }
+
 
 }
