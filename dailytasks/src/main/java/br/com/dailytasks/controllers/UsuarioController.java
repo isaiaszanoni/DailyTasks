@@ -25,6 +25,12 @@ import br.com.dailytasks.models.utilities.UserDTO;
 import br.com.dailytasks.repository.UsuarioRepository;
 import br.com.dailytasks.service.UsuarioService;
 
+/**
+ * Classe que fará a comunicação com a classe(model) Usuario.
+ * @author Bruno Luna e Isaías Rodrigues
+ * @version 1.0
+ */
+
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/api/users")
@@ -36,6 +42,12 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService userService;
 	
+	/**
+	 * Método que lista todos os usuários
+	 * 
+	 * @return Lista todos os usuários
+	 * @since 1.0
+	 */
 	@GetMapping("/")
 	public ResponseEntity<List<Usuario>> getAllUsers(){
 		List<Usuario> objectList = userRepository.findAll();
@@ -47,6 +59,13 @@ public class UsuarioController {
 		}
 	}
 	
+	/**
+	 * Método que busca por ID do usuário
+	 * 
+	 * @param id
+	 * @return ID do usuário
+	 * @since 1.0
+	 */
 	@GetMapping("/{id}")
     public ResponseEntity<Usuario> getByIdUser(@PathVariable(value = "id") Long id) {
         Optional<Usuario> objectoUser = userRepository.findById(id);
@@ -58,6 +77,14 @@ public class UsuarioController {
         }
     }
 	
+	/**
+	 * Método que consiste em verificar se o usuário existe, caso sim, fará o login
+	 * com suas credenciais.
+	 * 
+	 * @param userLogin
+	 * @return Optional 
+	 * @since 1.0
+	 */
 	@PostMapping("/login")
 	public ResponseEntity<Object> credentials(@Valid @RequestBody UserDTO userLogin){
 		Optional<?> objectOptional = userService.getLogin(userLogin);
@@ -76,6 +103,14 @@ public class UsuarioController {
 		}
 	}
 	
+	/**
+	 * Método que irá cadastrar o usuário, segundo as suas informações inseridas.
+	 * Se as crecenciais já existirem não salvará o usuário novamente.
+	 * 
+	 * @param newUser
+	 * @return Optional
+	 * @since 1.0
+	 */
 	@PostMapping("/register")
     public ResponseEntity<Object> newUser(@Valid @RequestBody Usuario newUser) {
         Optional<?> objectOptional = userService.saveUser(newUser);
@@ -87,7 +122,13 @@ public class UsuarioController {
         }
     }
 	
-	
+	/**
+	 * Método para atualizar as credenciais do usuário.
+	 * 
+	 * @param userUpdate
+	 * @return Optinal para atualizar
+	 * @since 1.0
+	 */
 	@PutMapping("/update")
 	public ResponseEntity<Object> update(@Valid @RequestBody UserDTO userUpdate){
 		Optional<?> objetoAlterado = userService.alterarUsuario(userUpdate);
@@ -100,7 +141,11 @@ public class UsuarioController {
 	
 	}
 	
-	
+	/**
+	 * Método para deletar um usuário pelo seu ID.
+	 * @param id
+	 * @since 1.0
+	 */
 	@DeleteMapping("/{id}")
     public void deleteUserId(@PathVariable(value = "id") Long id) {
         userRepository.deleteById(id);

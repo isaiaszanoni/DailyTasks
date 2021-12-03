@@ -14,6 +14,12 @@ import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * Classe que abstrai usuario(entidade).
+ * @author Bruno Luna e Isaías Rodrigues
+ * @version 1.0
+ */
+
 @Entity
 @Table(name = "tb_usuario")
 public class Usuario {

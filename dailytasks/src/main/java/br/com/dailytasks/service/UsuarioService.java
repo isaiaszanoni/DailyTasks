@@ -12,12 +12,25 @@ import br.com.dailytasks.models.Usuario;
 import br.com.dailytasks.models.utilities.UserDTO;
 import br.com.dailytasks.repository.UsuarioRepository;
 
+/**
+ * Classe que fará a verificação se o usuario, email existem e se a senha está correta.
+ * @author Bruno Luna e Isaías Rodrigues
+ * @version 1.0
+ */
+
 @Service
 public class UsuarioService {
 
 	private @Autowired
 	UsuarioRepository repository;
 	
+	/**
+	 * Método que permite salvar um usuário com suas credenciais com a camada de segurança.
+	 * 
+	 * @param newUser
+	 * @return Optional
+	 * @since 1.0
+	 */
 	public Optional<Object> saveUser(Usuario newUser){
 		return repository.findByEmail(newUser.getEmail()).map(usuarioExists -> {
 			return Optional.empty();
@@ -30,7 +43,14 @@ public class UsuarioService {
 	
 	}
 
-
+	/**
+	 * Método que validará as credenciais do usuário, bem como manter os dados sob
+	 * criptografia
+	 * 
+	 * @param userLogin
+	 * @return Optional
+	 * @since 1.0
+	 */
 	public Optional<?> getLogin(UserDTO userLogin) {
 	    return repository.findByEmail(userLogin.getEmail()).map(usuarioExists -> {
 	        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -56,7 +76,13 @@ public class UsuarioService {
 	    
 	}
 	
-	
+	/**
+	 * Método para alterar usuário e verifica se tal cadastro é existente.
+	 * 
+	 * @param usuarioParaAlterar
+	 * @return Optional 
+	 * @since 1.0
+	 */
 	public Optional<?> alterarUsuario(UserDTO usuarioParaAlterar) {
 		return repository.findById(usuarioParaAlterar.getId()).map(usuarioExistente -> {
 			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();

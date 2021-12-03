@@ -3,6 +3,12 @@ package br.com.dailytasks.models.utilities;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
+/**
+ * Classe chamada ao login de um determinado usuario
+ * @author Bruno Luna e Isaías Rodrigues
+ * @version 1.0
+ */
+
 public class UserDTO {
 	
 	@NotBlank

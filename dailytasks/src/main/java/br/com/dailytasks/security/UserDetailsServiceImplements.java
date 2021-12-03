@@ -12,6 +12,12 @@ import org.springframework.stereotype.Service;
 import br.com.dailytasks.models.Usuario;
 import br.com.dailytasks.repository.UsuarioRepository;
 
+/**
+ * Classe que verificará se o email se encontra registrado no banco de dados.
+ * @author Bruno Luna e Isaías Rodrigues
+ * @version 1.0
+ */
+
 @Service
 public class UserDetailsServiceImplements implements UserDetailsService{
 

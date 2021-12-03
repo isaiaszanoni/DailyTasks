@@ -14,6 +14,12 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
+/**
+ * Classe que abstrai tarefa(entidade).
+ * @author Bruno Luna e Isaías Rodrigues
+ * @version 1.0
+ */
+
 @Entity
 @Table(name = "tb_tarefa")
 public class Tarefas {

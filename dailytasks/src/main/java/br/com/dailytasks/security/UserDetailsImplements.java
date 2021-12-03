@@ -8,6 +8,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import br.com.dailytasks.models.Usuario;
 
+/**
+ * Classe que faz a leitura do email/senha do usuario.
+ * @author Bruno Luna e Isaías Rodrigues
+ * @version 1.0
+ */
+
 public class UserDetailsImplements  implements UserDetails{
 
 	 private static final long serialVersionUID = 1L;
