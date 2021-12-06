@@ -1,5 +1,7 @@
 package br.com.dailytasks.models;
 
+import java.util.Optional;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -93,5 +95,4 @@ public class Tarefas {
 	public void setCor(String cor) {
 		this.cor = cor;
 	}
-
 }

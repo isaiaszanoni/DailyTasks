@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,10 +15,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import br.com.dailytasks.models.Tarefas;
 import br.com.dailytasks.repository.TarefasRepository;
+import br.com.dailytasks.service.TarefaService;
 
 /**
  * Classe que fará a comunicação com a classe(model) Tarefas.
@@ -32,6 +35,7 @@ public class TarefasController {
 	
 	@Autowired
 	private TarefasRepository taskRepository;
+	private TarefaService taskService;
 	
 	/**
 	 * Método para buscar todas as tarefas
@@ -80,6 +84,15 @@ public class TarefasController {
         return taskRepository.findById(id_tarefa).map(resp -> ResponseEntity.ok(resp))
             .orElse(ResponseEntity.notFound().build());
     }
+	
+	@GetMapping("/id/usuario")
+	public ResponseEntity<Object> getTaskByIdUser(@Valid @RequestBody Tarefas findTaskbyIdUser){
+		return taskService.findByTaskIdUser(findTaskbyIdUser).map(resp -> ResponseEntity.status(200).body(resp))
+				.orElseGet(() -> {
+					throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+							"Tarefa não encontrada.");
+				});
+	}
 		
 	/**
 	 * Método que salva uma tarefa.
