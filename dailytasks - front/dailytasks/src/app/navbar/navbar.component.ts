@@ -17,6 +17,8 @@ export class NavbarComponent implements OnInit {
   // armazena o valor do input de senha para gerar evento
   confirmarSenha: string
 
+  hide: boolean = false
+  
   constructor(
     public authService: AuthService,
     public router: Router  
