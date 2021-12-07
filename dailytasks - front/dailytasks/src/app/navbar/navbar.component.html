@@ -34,8 +34,10 @@
             </button>
             <ul class="dropdown-menu bg-preto mt-5" aria-labelledby="dropdownMenuButton1">
               <li>
-                <!-- <a routerLink="/usuario-edit/%{{ user.id }}" *ngIf='user.nome != "Visitante"'  class="dropdown-item bg-preto text-cinza hover-amarelo" disabled>Editar cadastro</a> -->
-                <a routerLink="/usuario-edit/%{{ user.id }}" class="dropdown-item bg-preto text-cinza hover-amarelo">Editar cadastro</a>
+
+               <a routerLink="/usuario-edit/%{{ user.id }}" *ngIf='authService.nomeUsuario() != "Visitante" && !hide' 
+                 class="dropdown-item bg-preto text-cinza hover-amarelo" disabled>Editar cadastro</a> 
+
               <li  class="dropdown-item bg-preto">
                 <a routerLink="/tasks" class="text-cinza hover-amarelo">Minhas tarefas</a>
               </li>
