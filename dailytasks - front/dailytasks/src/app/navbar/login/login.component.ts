@@ -41,8 +41,11 @@ export class LoginComponent implements OnInit {
       } else {
         this.authService.flag = true
         this.router.navigate(['/tasks'])
-        console.log(this.user.token)
       }
+    }, erro => {
+        if(erro.status == 400){
+          alert('Por favor, preencha os campos.')
+        }
     })
   }
 

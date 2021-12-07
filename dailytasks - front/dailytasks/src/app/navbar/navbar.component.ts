@@ -41,6 +41,10 @@ export class NavbarComponent implements OnInit {
         this.user = resp
         this.router.navigate(['/navbar/login'])
         alert('Usuário cadastrado com sucesso!')
+      }, erro =>{
+        if (erro.status == 400){
+          alert('Cadastro existente, por favor cadastrar outro.')
+        }
       })
     }
   }
