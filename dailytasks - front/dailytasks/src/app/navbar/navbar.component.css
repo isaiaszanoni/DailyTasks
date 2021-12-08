@@ -48,3 +48,26 @@ h1, .user{
     border: 1px solid #FCFF6F;
 }
 
+#small{
+    display: none;
+}
+
+@media only screen and (max-width:560px){
+
+   #large{
+       display: none;
+   }
+
+   #small{
+       display: initial;
+       line-height: 2rem;
+   }
+
+   ol, ul {
+    padding-left: 0;
+   }
+
+   p.nav-link{
+    margin-bottom: .12rem;
+    }
+}
