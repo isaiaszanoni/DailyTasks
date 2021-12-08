@@ -3,6 +3,7 @@ import { Usuario } from './../../model/Usuario';
 import { AuthService } from 'src/app/service/auth.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { AlertService } from 'src/app/service/alert.service';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthService,
+    private alert: AlertService
   ) { }
 
   ngOnInit(): void {
@@ -36,7 +38,7 @@ export class LoginComponent implements OnInit {
       environment.id = this.user.id
 
       if (environment.token == null || environment.id == null) {
-        alert('Usuário ou senha incorretos!')
+        this.alert.danger('Usuário ou senha incorretos!')
         this.authService.flag = false
       } else {
         this.authService.flag = true
@@ -44,7 +46,7 @@ export class LoginComponent implements OnInit {
       }
     }, erro => {
         if(erro.status == 400){
-          alert('Por favor, preencha os campos.')
+          this.alert.danger('Por favor, preencha os campos.')
         }
     })
   }
