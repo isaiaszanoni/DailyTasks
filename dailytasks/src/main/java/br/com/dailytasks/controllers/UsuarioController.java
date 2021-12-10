@@ -97,7 +97,7 @@ public class UsuarioController {
 		}*/
 		
 		if (objectOptional.isEmpty()) {
-			return ResponseEntity.status(400).build();
+			return ResponseEntity.status(401).build();
 		} else {
 			return ResponseEntity.status(200).body(objectOptional.get());
 		}
@@ -116,7 +116,7 @@ public class UsuarioController {
         Optional<?> objectOptional = userService.saveUser(newUser);
 
         if (objectOptional.isEmpty()) { 
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário existente!", null);
+			throw new ResponseStatusException(HttpStatus.OK, "Usuário já existente!", null);
         } else {
             return ResponseEntity.status(201).body(objectOptional.get());
         }
