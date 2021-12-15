@@ -53,7 +53,7 @@ export class UsuarioEditComponent implements OnInit {
         this.usuario = resp
 
         this.authService.sair()
-        alert('Perfil atualizado! Por favor, logar novamente.')
+        this.alert.success('Perfil atualizado! Por favor, logar novamente.')
         console.log(this.usuario.nome);
       })
     }
