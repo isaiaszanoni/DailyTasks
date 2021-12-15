@@ -50,6 +50,9 @@ img.task-icon {
     box-shadow: none;
 }
 
+.btn-dots{
+    float: right;
+}
 
 @media only screen and (max-width:568px){
 

@@ -1,31 +1,32 @@
 <div class="container-fluid bg-preto" style="min-height: 90vh">
     <div class="row">
-        <section>
-            <h2 class="text-center text-branco my-3">Minhas Tarefas</h2>
+        <section class="d-flex justify-content-around align-items-center">
+            <h2 class="text-branco my-3">Minhas tarefas</h2>
+            <button class="btn btn-primary btn-sm nova-task" data-bs-toggle="modal" data-bs-target="#add-taskModal" style="height: 3rem; width: 14rem;">Nova Tarefa</button>
         </section>
 
-        <main class="col-12 d-flex flex-wrap-reverse w-100 ps-lg-5 ps-md-5 p-sm-0 p-0">
+        <main class="col-12 d-flex justify-content-center flex-wrap-reverse w-100">
 
             <!-- Tasks part -->
-            <section class="d-flex flex-wrap col-12 col-sm-12 col-md-9 col-lg-9 justify-content-center justify-content-sm-center justify-content-md-start justify-content-lg-start">
+            <section class="d-flex flex-wrap col-12 col-sm-12 col-md-9 col-lg-9 justify-content-center justify-content-sm-center justify-content-md-start justify-content-lg-start" >
 
-                <div class="col-5 col-sm-3 col-md-3 col-lg-3 m-3 rounded-3 bg-task-{{ item.cor }}"
-                    *ngFor="let item of user.myTasks">
+                <div class="w-100 m-3 rounded-3 bg-task-{{ item.cor }}"
+                    *ngFor="let item of user.myTasks" style="min-height: 200px;">
 
                     <div class="d-flex justify-content-between col-12 mt-2">
-                        <h6 class="task-title ps-3 mb-0 pb-0">{{ item.tarefa }}</h6>
+                        <h6 class="task-title fs-3 ps-4 mb-0 pb-0">{{ item.tarefa }}</h6>
                         <input type="checkbox" class="form-check-input me-3">
                     </div>
 
                     <div class="mt-1 texto">
-                        <p class="ps-3">
+                        <p class="px-4 fs-6">
                             <span>{{ item.descricao }}</span>
                         </p>
                     </div>
 
 
                     <div class="dropstart">
-                        <button class="btn task-dropdown text-dark position-absolute bottom-0 end-0 mt-1" href="#" role="button" id="dropdownMenuLink"
+                        <button class="btn btn-dots task-dropdown text-dark  mt-1" href="#" role="button" id="dropdownMenuLink"
                             data-bs-toggle="dropdown" aria-expanded="false">...</button>
 
                         <ul class="dropdown-menu bg-preto" aria-labelledby="dropdownMenuLink">
@@ -37,17 +38,8 @@
                             </li>
                         </ul>
                     </div>
-
-
                 </div>
 
-            </section>
-
-            <section class="col-12 col-sm-12 col-md-3 col-md-3">
-                <div class="d-flex flex-column m-auto">
-                    <h6 class="text-center"></h6>
-                    <button class="btn btn-primary btn-sm m-auto nova-task" data-bs-toggle="modal" data-bs-target="#add-taskModal">Nova Tarefa</button>
-                </div>
             </section>
 
         </main>
