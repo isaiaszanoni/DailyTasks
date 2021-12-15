@@ -16,11 +16,11 @@
         </div>
         <div class="text-cinza right">
             <h2 class="text-branco">Escreva o seu feedback</h2>
-            <input type="text" name="nome" id="nome" class="border-cinza input-modal" placeholder="Nome:" />
-            <input type="email" class="border-cinza input-modal" placeholder="Email:" />
-            <textarea name="mensagem" id="mensagem" cols="2" rows="4" placeholder="Sua mensagem:"
+            <input [(ngModel)]='feedback.nome' type="text" name="nome" id="nome" class="border-cinza input-modal" placeholder="Nome:" />
+            <input  [(ngModel)]='feedback.email' type="email" class="border-cinza input-modal" placeholder="Email:" />
+            <textarea [(ngModel)]='feedback.feedback' name="mensagem" id="mensagem" cols="2" rows="4" placeholder="Sua mensagem:"
                 class="border-cinza"></textarea>
-            <button class="btn btn-primary">ENVIAR</button>
+            <button (click)='enviarFeedback()' class="btn btn-primary">ENVIAR</button>
         </div>
     </div>
     <div class="dev">
