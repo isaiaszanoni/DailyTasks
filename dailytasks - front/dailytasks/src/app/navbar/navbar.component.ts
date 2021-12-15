@@ -42,10 +42,10 @@ export class NavbarComponent implements OnInit {
       this.authService.register(this.user).subscribe((resp: Usuario) => {
         this.user = resp
         this.router.navigate(['/navbar/login'])
-        alert('Usuário cadastrado com sucesso!')
+        this.alert.success('Usuário cadastrado com sucesso!')
       }, erro =>{
         if (erro.status == 400){
-          this.alert.danger('Cadastro existente, por favor cadastrar outro.')
+          this.alert.danger('Cadastro já existente ou campos incorretos.')
         }
       })
     }

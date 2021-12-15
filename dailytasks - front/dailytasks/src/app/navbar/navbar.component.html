@@ -113,7 +113,9 @@
             </div>
           </div>
           <button type="button" class="btn btn-link link-light" data-bs-dismiss="modal">Cancelar</button>
-          <button (click)='cadastrar()' type="button" data-bs-dismiss="modal" class="btn btn-primary">Cadastrar</button>
+
+          <button *ngIf="user.email == null || user.senha == null || user.nome == null" type="button" data-bs-dismiss="modal" class="btn btn-primary" disabled>Cadastrar</button>
+          <button *ngIf="user.email != null && user.senha != null && user.nome != null" (click)='cadastrar()' type="button" data-bs-dismiss="modal" class="btn btn-primary">Cadastrar</button>
         </div>
       </div>
     </div>
