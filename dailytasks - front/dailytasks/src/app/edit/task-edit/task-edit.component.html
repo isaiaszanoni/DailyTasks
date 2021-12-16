@@ -8,7 +8,7 @@
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center flex-wrap">
                 <div class="card bg-dark text-branco col-12 col-sm-12 col-md-8 col-lg-8 col-xl-7">
                     <div class="card-header">
-                        <h5 class="card-title">Editar Tarefa</h5>
+                        <h5 class="card-title">Edite sua tarefa</h5>
                     </div>
                     <div class="card-body">
                         <div class="form-group d-flex flex-column">
@@ -50,7 +50,7 @@
                         <button type="button" class="btn btn-link text-decoration-none" data-bs-dismiss="modal"
                             routerLink='/tasks'>Cancelar</button>
                         <button type="button" class="btn btn-primary" *ngIf='task.cor == null' alt="Escolha uma cor" disabled>Salvar</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        <button type="button" class="btn btn-primary" *ngIf='task.cor != null' data-bs-dismiss="modal"
                             (click)='atualizar()'>Salvar</button>
                     </div>
                 </div>
