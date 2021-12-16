@@ -7,21 +7,18 @@
 
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center flex-wrap">
                 <div class="card bg-dark text-branco col-12 col-sm-12 col-md-8 col-lg-8 col-xl-7">
-                    <div class="card-header">
+                    <div class="card-header bg-dark">
                         <h5 class="card-title">Tem certeza que deseja excluir o seu cadastro?</h5>
                     </div>
                     <div class="card-body">
                         <div class="form-group d-flex flex-column">
 
-                            <label for="tarefa" class="mt-2 me-3">Usuario:</label>
-                            <input [(ngModel)]='user.nome' type="text" class="input-modal mt-2 mb-4" disabled>
+                            <input [(ngModel)]='user.nome' type="text" class="w-75 m-auto rounded input-modal mb-3" disabled>
 
-
-                            <label for="descricao">Email:</label>
-                            <input [(ngModel)]='user.email' type="text" class="me-3 input-modal mt-2" disabled>
+                            <input [(ngModel)]='user.email' type="text" class="w-75 m-auto rounded input-modal mb-3" disabled>
                         </div>
                     </div>
-                    <div class="card-footer">
+                    <div class="card-footer bg-dark">
                         <button type="button" class="btn btn-link text-decoration-none" data-bs-dismiss="modal"
                             routerLink='/tasks'>Cancelar</button>
                         <button (click)='apagarUsuario()' type="button" class="btn btn-danger" data-bs-dismiss="modal">Apagar</button>

@@ -8,17 +8,17 @@
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center flex-wrap">
                 <div class="card bg-dark text-branco col-12 col-sm-12 col-md-8 col-lg-8 col-xl-7">
                     <div class="card-header">
-                        <h5 class="card-title">Editar Tarefa</h5>
+                        <h5 class="card-title">Edite sua tarefa</h5>
                     </div>
                     <div class="card-body">
                         <div class="form-group d-flex flex-column">
 
                             <label for="tarefa" class="mt-2 me-3">Tarefa:</label>
-                            <input [(ngModel)]='task.tarefa' type="text" class="input-modal mt-2 mb-4">
+                            <input [(ngModel)]='task.tarefa' type="text" class="w-75  rounded input-modal mb-3">
 
 
                             <label for="descricao">Descrição:</label>
-                            <textarea [(ngModel)]='task.descricao' type="text" class="me-3 input-modal mt-2"></textarea>
+                            <textarea [(ngModel)]='task.descricao' type="text" class="w-75 rounded input-modal mb-3"></textarea>
                         </div>
                     </div>
 
@@ -50,7 +50,7 @@
                         <button type="button" class="btn btn-link text-decoration-none" data-bs-dismiss="modal"
                             routerLink='/tasks'>Cancelar</button>
                         <button type="button" class="btn btn-primary" *ngIf='task.cor == null' alt="Escolha uma cor" disabled>Salvar</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        <button type="button" class="btn btn-primary" *ngIf='task.cor != null' data-bs-dismiss="modal"
                             (click)='atualizar()'>Salvar</button>
                     </div>
                 </div>

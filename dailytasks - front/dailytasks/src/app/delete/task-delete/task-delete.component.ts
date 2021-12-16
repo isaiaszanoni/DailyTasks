@@ -23,6 +23,7 @@ export class TaskDeleteComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    
     if (environment.token == '') {
       this.router.navigate(['/home'])
     }

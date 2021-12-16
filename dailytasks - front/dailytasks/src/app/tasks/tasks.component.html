@@ -50,17 +50,17 @@
         <div class="modal-content bg-dark text-branco">
             <div class="modal-header">
                 <h5 class="modal-title" id="add-taskModalLabel">Nova Tarefa</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="form-group d-flex flex-column">
 
-                    <label for="" class="mt-3 me-3">Tarefa:</label>
-                    <input [(ngModel)]='tarefa.tarefa' type="text" class="input-modal mt-2 mb-4">
+                    <label for="" class="mt-3 text-start me-3">Tarefa:</label>
+                    <input [(ngModel)]='tarefa.tarefa' type="text" class="w-100 rounded input-modal mb-3">
 
 
-                    <label>Descrição:</label>
-                    <textarea [(ngModel)]='tarefa.descricao' type="text" class="me-3 input-modal mt-2"></textarea>
+                    <label class="text-start me-3">Descrição:</label>
+                    <textarea [(ngModel)]='tarefa.descricao' type="text" class="w-100 rounded input-modal mb-3"></textarea>
 
                     <div>
                         <h6 class="card-subtitle my-3">Cor da Tarefa:</h6>
@@ -89,13 +89,14 @@
 
                 </div>
             </div>
-            <div class="modal-footer">
+            <div class="card-footer bg-dark border-top border-light">
                 <button type="button" class="btn btn-link text-decoration-none"
                     data-bs-dismiss="modal">Cancelar</button>
                 <button type="button" class="btn btn-primary" *ngIf='tarefa.cor == null' disabled>Salvar</button>
 
                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)='publicar()'
                     *ngIf='tarefa.cor != null'>Salvar</button>
+                    
             </div>
         </div>
     </div>

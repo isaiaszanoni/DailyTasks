@@ -1,0 +1,19 @@
+ul {
+    list-style-type: none;
+}
+
+.crud-list {
+    margin-left: 10%;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.crud-icones {
+    margin-right: 5px;
+    width: 30px;
+}
+
+.celular {
+    max-width: 350px;
+    max-height: 500px;
+}

@@ -1,0 +1,29 @@
+.no-border {
+    border: 0px;
+}
+
+.bg-card {
+    background-color: #E3E3E3 !important;
+}
+
+.max {
+    max-height: 60px;
+}
+
+img.task-icon {
+    max-width: 22px;
+    margin-right: 6px;
+}
+
+.nova-task {
+    max-width: 28%;
+    min-width: 100px;
+}
+
+.pesquisar {
+    max-width: 70%;
+    min-width: 180px;
+}
+
+
+
