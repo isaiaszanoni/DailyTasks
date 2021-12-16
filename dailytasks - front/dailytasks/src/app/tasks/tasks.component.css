@@ -1,3 +1,11 @@
+pre {
+    font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    white-space: pre-line !important;
+}
+
 .no-border {
     border: 0px;
 }
@@ -14,6 +22,7 @@ img.task-icon {
     max-width: 22px;
     margin-right: 6px;
 }
+
 
 .nova-task, .pesquisar {
     max-width: 70%;
@@ -34,16 +43,18 @@ img.task-icon {
     width: 83%;
 }
 
-.task-dropdown {
-    font-size: 1.5rem;
-    text-decoration: none;
-    align-items: center;
-}
 
 .btn:focus {
     box-shadow: none;
 }
 
+.btn-dots{
+    float: right;
+    max-height: 50px;
+    font-size: 1.5rem;
+    text-decoration: none;
+    align-items: center;
+}
 
 @media only screen and (max-width:568px){
 

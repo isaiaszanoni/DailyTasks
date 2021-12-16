@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Tarefas } from 'src/app/model/Tarefas';
+import { AlertService } from 'src/app/service/alert.service';
 import { TaskService } from 'src/app/service/task.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -17,7 +18,8 @@ export class TaskDeleteComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private taskService: TaskService
+    private taskService: TaskService,
+    private alert: AlertService
   ) { }
 
   ngOnInit() {
@@ -38,7 +40,7 @@ export class TaskDeleteComponent implements OnInit {
 
   apagar() {
     this.taskService.deleteTask(this.idtask).subscribe(()=>{
-    alert('Postagem apagada com sucesso!')
+    this.alert.danger('Postagem apagada com sucesso!')
     this.router.navigate(['/tasks'])
    })
   }

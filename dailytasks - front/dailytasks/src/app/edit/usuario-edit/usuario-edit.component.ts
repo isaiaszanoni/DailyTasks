@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from './../../service/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/model/Usuario';
+import { AlertService } from 'src/app/service/alert.service';
 
 @Component({
   selector: 'app-usuario-edit',
@@ -21,7 +22,8 @@ export class UsuarioEditComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private alert: AlertService
   ) { }
 
   ngOnInit() {
@@ -45,13 +47,13 @@ export class UsuarioEditComponent implements OnInit {
     console.log(this.usuario.nome);
 
     if (this.usuario.senha != this.confirmarSenha) {
-      alert('As senhas não correspondem!')
+      this.alert.danger('As senhas não correspondem!')
     } else {
       this.authService.putUsuario(this.usuario).subscribe((resp: Usuario) => {
         this.usuario = resp
 
         this.authService.sair()
-        alert('Perfil atualizado! Por favor, logar novamente.')
+        this.alert.success('Perfil atualizado! Por favor, logar novamente.')
         console.log(this.usuario.nome);
       })
     }

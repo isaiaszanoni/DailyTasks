@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment.prod';
 
 import { Tarefas } from 'src/app/model/Tarefas';
 import { TaskService } from 'src/app/service/task.service';
+import { AlertService } from 'src/app/service/alert.service';
 @Component({
   selector: 'app-task-edit',
   templateUrl: './task-edit.component.html',
@@ -16,7 +17,8 @@ export class TaskEditComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private taskService: TaskService
+    private taskService: TaskService,
+    private alert: AlertService
   ) { }
 
   ngOnInit(){
@@ -40,7 +42,7 @@ export class TaskEditComponent implements OnInit {
 
     this.taskService.putTask(this.task).subscribe((resp: Tarefas) =>{
       this.task = resp
-      alert('Postagem Atualizada com sucesso!')
+      this.alert.success('Postagem Atualizada com sucesso!')
       this.router.navigate(['/tasks'])
     })
   }

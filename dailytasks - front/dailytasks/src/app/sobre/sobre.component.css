@@ -78,6 +78,8 @@ textarea{
 
 .cards {
     height: auto;
+    max-width: 24rem;
+    width: 22rem;
     background-color: #1F2123;
     border: 1px solid #696969;
     border-radius: 8px;
@@ -100,19 +102,24 @@ img{
 }
 
 .cards p:nth-child(2),.cards p:nth-child(3),.cards p:nth-child(4){
-    margin-bottom: .2rem;
+    margin-bottom: .3rem;
+
+}
+.cards p:nth-child(4){
+    margin-bottom: .6rem;
 
 }
 
 hr{
-    width: 80%;
-    margin: .8rem auto;
+    width: 100%;
+    margin: auto;
 }
 
 .icones{
     display: flex;
-    gap: 1rem;
-    margin: .8rem 0;
+    justify-content: space-around;
+    margin: .8rem;
+    
 }
 
  .icones a img:hover{
@@ -139,6 +146,10 @@ hr{
     p.descricao{
         margin: 0;
         padding: 0 1rem;
+    }
+
+    a.text-amarelo{
+        margin-left: 1rem;
     }
 
     p.descricao, input, textarea, button{
@@ -171,11 +182,6 @@ hr{
 
    .cards{
        margin: 1.4rem auto;
-   }
- 
-   .icones{
-        position: relative;
-        left: 25px;
    }
 
 }

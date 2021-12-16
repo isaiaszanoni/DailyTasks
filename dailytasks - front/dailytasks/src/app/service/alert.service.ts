@@ -22,4 +22,7 @@ export class AlertService {
     this.alert(message, 'success')
   }
 
+  danger(message: string){
+    this.alert(message, 'danger')
+  }
 }

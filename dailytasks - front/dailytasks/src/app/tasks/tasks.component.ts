@@ -62,7 +62,7 @@ export class TasksComponent implements OnInit {
         
       })
     } else {
-      this.alert.success("Escolha uma cor!")
+      this.alert.danger("Escolha uma cor!")
     }
   }
 
@@ -74,11 +74,6 @@ export class TasksComponent implements OnInit {
         this.user.myTasks = resp
       })
     }
-  }
-
-  verificaCor() {
-    
-    
   }
 
 }

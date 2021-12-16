@@ -1,70 +1,49 @@
-<div class="container-fluid bg-preto" style="min-height: 90vh">
+<div class="container-fluid bg-preto" style="min-height: 83vh">
     <div class="row">
+        <section class="d-flex justify-content-around align-items-center">
+            <h2 class="text-branco my-3">Minhas tarefas</h2>
+            <button class="btn btn-primary btn-sm nova-task" data-bs-toggle="modal" data-bs-target="#add-taskModal"
+                style="height: 3rem; width: 14rem;">Nova Tarefa</button>
+        </section>
 
-        <h2 class="text-branco text-md-center text-lg-center mb-3 myTasks">Minhas Tarefas</h2>
+        <main class="col-12 d-flex justify-content-center flex-wrap-reverse w-100">
 
-        <main class="d-flex flex-wrap-reverse">
+            <!-- Tasks part -->
+            <section
+                class="d-flex flex-wrap col-12 col-sm-12 col-md-9 col-lg-9 justify-content-center justify-content-sm-center justify-content-md-start justify-content-lg-start">
 
-            <!--card padrao-->
-            <div class="min-col col-12 col-sm-12 col-md-9 col-lg-9 d-block d-flex justify-content-center">
+                <div class="w-100 m-3 rounded-3 bg-task-{{ item.cor }}" *ngFor="let item of user.myTasks">
 
-                <div class="card border-0 col-11 col-md-9 col-lg-9 d-flex bg-preto m-4">
-                    <div class="card-body p-0 bg-preto">
-                        <div class="card-text ps-3">
-                            <p>
-                                <span>.</span>
-                            </p>
-                        </div>
+                    <div class="d-flex justify-content-between col-12 mt-2">
+                        <h6 class="task-title fs-3 ps-4 mb-0 pb-0">{{ item.tarefa }}</h6>
                     </div>
-                </div>
-            </div>
 
-
-            <!--/card padrao-->
-
-            <div class="min-col col-12 col-sm-12 col-md-9 col-lg-9 d-flex justify-content-center"
-                *ngFor="let item of user.myTasks">
-
-                <div class="card col-11 col-md-9 col-lg-9 d-flex bg-task-{{ item.cor }} m-4 ">
-                    <div class="card-header bg-task-{{ item.cor }} no-border d-flex justify-content-between">
-                        <h4 class="card-title task-title">{{ item.tarefa }}</h4>
-                        <input type="checkbox" name="" class="form-check-input">
+                    <div class="m-0 p-0">
+                        <pre class="px-4 fs-6 mt-2">{{ item.descricao }}</pre>
                     </div>
-                    <div class="d-flex justify-content-between">
-                        <div class="card-text ps-3 bg-task-{{ item.cor }}">
-                            <p>
-                                <span>{{ item.descricao }}</span>
-                            </p>
-                        </div>
 
-                        <div class="dropstart">
-                            <button class="btn task-dropdown text-dark me-1" href="#" role="button" id="dropdownMenuLink"
-                                data-bs-toggle="dropdown" aria-expanded="false">...</button>
 
-                            <ul class="dropdown-menu bg-preto" aria-labelledby="dropdownMenuLink">
-                                <li><a class="dropdown-item bg-preto text-cinza hover-amarelo" [routerLink]="['/task-edit', item.id_tarefa]">Editar Task</a>
-                                </li>
-                                <li><a class="dropdown-item bg-preto text-cinza hover-amarelo" [routerLink]="['/task-delete', item.id_tarefa]">Excluir Task</a>
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="dropstart p-0 me-3">
+                        <button class="btn btn-dots text-dark p-0" href="#" role="button" id="dropdownMenuLink"
+                            data-bs-toggle="dropdown" aria-expanded="false">...</button>
 
+                        <ul class="dropdown-menu bg-preto" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item bg-preto text-cinza hover-amarelo"
+                                    [routerLink]="['/task-edit', item.id_tarefa]">Editar Task</a>
+                            </li>
+                            <li><a class="dropdown-item bg-preto text-cinza hover-amarelo"
+                                    [routerLink]="['/task-delete', item.id_tarefa]">Excluir Task</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
-            </div>
-            <div class="col-12 col-sm-12 col-md-3 col-lg-3 text-branco btn-input">
-                <div class="d-flex flex-column m-auto">
-                    <button class="btn btn-primary mt-3 mb-3 mb-md-5 mb-lg-5 nova-task" data-bs-toggle="modal"
-                        data-bs-target="#add-taskModal">Inserir tarefa</button>
-                    <h6>Pesquisar por Titulo:</h6>
-                    <input [(ngModel)]='pesquisa' (keyup)='findByNameTasks()' type="text"
-                        placeholder="Digite o titulo da tarefa" class="input-modal pesquisar">
-                </div>
-            </div>
+            </section>
+
         </main>
-    </div>
-</div>
+
+    </div> <!-- /row -->
+</div> <!-- /container -->
 
 <div class="modal fade" id="add-taskModal" tabindex="-1" aria-labelledby="add-taskModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -113,8 +92,8 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-link text-decoration-none"
                     data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" (click)='publicar()' *ngIf='tarefa.cor == null' disabled>Salvar</button>
-                
+                <button type="button" class="btn btn-primary" *ngIf='tarefa.cor == null' disabled>Salvar</button>
+
                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)='publicar()'
                     *ngIf='tarefa.cor != null'>Salvar</button>
             </div>

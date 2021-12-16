@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { Usuario } from '../model/Usuario';
+import { AlertService } from '../service/alert.service';
 import { AuthService } from '../service/auth.service';
 
 @Component({
@@ -21,7 +22,8 @@ export class NavbarComponent implements OnInit {
   
   constructor(
     public authService: AuthService,
-    public router: Router  
+    public router: Router,
+    private alert: AlertService
     ) { }
 
   ngOnInit(): void {
@@ -35,12 +37,16 @@ export class NavbarComponent implements OnInit {
 
   cadastrar() {
     if (this.user.senha != this.confirmarSenha) {
-      alert('As senhas não correspondem!')
+      this.alert.danger('As senhas não correspondem!')
     } else {
       this.authService.register(this.user).subscribe((resp: Usuario) => {
         this.user = resp
         this.router.navigate(['/navbar/login'])
-        alert('Usuário cadastrado com sucesso!')
+        this.alert.success('Usuário cadastrado com sucesso!')
+      }, erro =>{
+        if (erro.status == 400){
+          this.alert.danger('Cadastro já existente ou campos incorretos.')
+        }
       })
     }
   }

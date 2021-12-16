@@ -1,92 +1,123 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-preto">
-    <div class="container-fluid mt-2">
-        <h1 class="navbar-brand nav text-amarelo ms-5">DailyTasks</h1>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span>
-          <img src="../../assets/img/icones/menu-aberto.png" style="height: 18px;">
-        </span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mb-2 ms-auto mb-lg-0">
+  <div class="container-fluid mt-2">
+    <h1 class="navbar-brand nav text-amarelo ms-5">DailyTasks</h1>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span>
+        <img src="../../assets/img/icones/menu-aberto.png" style="height: 18px;">
+      </span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mb-2 ms-auto mb-lg-0">
 
-          <li class="nav-item">
-            <a class="nav-link text-cinza me-5 hover-amarelo" aria-current="page" routerLink='/home'>Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-cinza me-5 hover-amarelo" routerLink='/sobre'>Sobre</a>
-          </li>
-          <li *ngIf="authService.logado() == false" class="nav-item">
-            <a class="nav-link text-cinza me-5 hover-amarelo" data-bs-toggle="modal" data-bs-target="#cadastrarModal">Cadastre-se</a>
-          </li>
-          <li *ngIf="authService.logado() == false" class="nav-item">
-            <a routerLink="/navbar/login" class="nav-link text-cinza btn me-5 hover-amarelo border-cinza login">Login</a>
-          </li>
+        <li class="nav-item">
+          <a class="nav-link text-cinza me-5 hover-amarelo" aria-current="page" routerLink='/home'>Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-cinza me-5 hover-amarelo" routerLink='/sobre'>Sobre</a>
+        </li>
+        <li *ngIf="authService.logado() == false" class="nav-item">
+          <a class="nav-link text-cinza me-5 hover-amarelo" data-bs-toggle="modal"
+            data-bs-target="#cadastrarModal">Cadastre-se</a>
+        </li>
+        <li *ngIf="authService.logado() == false" class="nav-item">
+          <a routerLink="/navbar/login" class="nav-link text-cinza btn me-5 hover-amarelo border-cinza login">Login</a>
+        </li>
+
+        <li *ngIf="authService.logado() != false" class="nav-item">
+          <p class="nav-link text-cinza me-1 user">Olá, <span class="text-amarelo"> {{authService.nomeUsuario()}}</span>
+          </p>
+        </li>
+
+        <!-- DROPDOWN USUARIO (Tela grande)-->
+
+        <div class="dropdown dropstart" id="large" *ngIf="authService.logado() != false">
+          <button class="btn text-cinza" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <img src="../../assets/img/icones/user.png" class="person" style="height: 22px;" alt="">
+          </button>
+          <ul class="dropdown-menu bg-preto" aria-labelledby="dropdownMenuButton1">
+            <li>
+              <a routerLink="/usuario-edit/%{{ user.id }}" *ngIf='authService.nomeUsuario() != "Visitante" && !hide'
+                class="dropdown-item bg-preto text-cinza hover-amarelo" disabled>Editar cadastro</a>
+
+            <li class="dropdown-item bg-preto">
+              <a routerLink="/tasks" class="text-cinza hover-amarelo">Minhas tarefas</a>
+            </li>
+            <li class="dropdown-item bg-preto hover-amarelo">
+              <a (click)='authService.sair()' class="text-cinza hover-amarelo pointer-event">Sair<img
+                  src="../../assets/img/icones/logout.png" style="height: 18px; margin-left: 14px;" alt=""></a>
+            </li>
+          </ul>
+        </div>
+        
+
+        <!-- DROPDOWN USUARIO (Tela pequena)-->
+
+        <div class="list" id="small" *ngIf="authService.logado() != false">
           
-          <li *ngIf="authService.logado() != false" class="nav-item">
-            <p class="nav-link text-cinza me-1 user">Olá, <span class="text-amarelo"> {{authService.nomeUsuario()}}</span></p>
-          </li>
+          <ul class=" bg-preto" >
+            <li>
+              <a routerLink="/usuario-edit/%{{ user.id }}" *ngIf='authService.nomeUsuario() != "Visitante" && !hide'
+                class="bg-preto text-cinza hover-amarelo" disabled>Editar cadastro</a>
 
-          <!-- DROPDOWN USUARIO -->
+            <li class=" bg-preto">
+              <a routerLink="/tasks" class="text-cinza hover-amarelo">Minhas tarefas</a>
+            </li>
+            <li class=" bg-preto hover-amarelo">
+              <a (click)='authService.sair()' class="text-cinza hover-amarelo pointer-event">Sair<img
+                  src="../../assets/img/icones/logout.png" style="height: 18px; margin-left: 14px;" alt="Porta de saída"></a>
+            </li>
+          </ul>
+        </div>
 
-          <div class="dropdown dropstart" *ngIf="authService.logado() != false" >
-            <button  class="btn text-cinza" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="../../assets/img/icones/user.png" style="height: 22px;" alt="">
-            </button>
-            <ul class="dropdown-menu bg-preto mt-5" aria-labelledby="dropdownMenuButton1">
-              <li>
 
-               <a routerLink="/usuario-edit/%{{ user.id }}" *ngIf='authService.nomeUsuario() != "Visitante" && !hide' 
-                 class="dropdown-item bg-preto text-cinza hover-amarelo" disabled>Editar cadastro</a> 
-
-              <li  class="dropdown-item bg-preto">
-                <a routerLink="/tasks" class="text-cinza hover-amarelo">Minhas tarefas</a>
-              </li>
-              <li class="dropdown-item bg-preto hover-amarelo">
-                <a (click)='authService.sair()' class="text-cinza hover-amarelo pointer-event">Sair<img src="../../assets/img/icones/logout.png" style="height: 18px; margin-left: 14px;" alt=""></a>
-              </li>
-            </ul>
-          </div>
-          <!-- / DROPDOWN USUARIO  -->
-        </ul>
-      </div>
+        <!-- / DROPDOWN USUARIO  -->
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <!-- Modal Cadastre-se!-->
-  <div class="modal bg-blur fade" id="cadastrarModal" tabindex="-1" aria-labelledby="cadastrarModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl">
-      <div class="modal-content border-0 d-flex justify-content-center text-center bg-transparent text-branco">
+<!-- Modal Cadastre-se!-->
+<div class="modal bg-blur fade" id="cadastrarModal" tabindex="-1" aria-labelledby="cadastrarModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content border-0 d-flex justify-content-center text-center bg-transparent text-branco">
 
-        <button type="button" class="btn-close btn-close-white ms-auto me-4" data-bs-dismiss="modal"
-          aria-label="Close"></button>
-        <h3 class="modal-title text-center" id="cadastrarModalLabel">Cadastre-se!</h3>
-        <p>
-          Ou clique <a routerLink="navbar/login" class="text-amarelo m-0 p-0 card-subtitle btn" data-bs-dismiss="modal" data-bs-toggle="modal">
-             aqui
-          </a>
-           para fazer login!
-        </p>
+      <button type="button" class="btn-close btn-close-white ms-auto me-4" data-bs-dismiss="modal"
+        aria-label="Close"></button>
+      <h3 class="modal-title text-center" id="cadastrarModalLabel">Cadastre-se!</h3>
+      <p>
+        Ou clique <a routerLink="navbar/login" class="text-amarelo m-0 p-0 card-subtitle btn" data-bs-dismiss="modal"
+          data-bs-toggle="modal">
+          aqui
+        </a>
+        para fazer login!
+      </p>
 
-        <div class="modal-body d-flex justify-content-center">
-          <div class="col-10 col-sm-10 col-md-8 col-lg-6">
-            <div class="mb-4">
-              <div class="form-group d-flex flex-column">
-                <input [(ngModel)]='user.nome' type="text" placeholder="*Nome: " class="w-75 m-auto rounded input-modal mb-3">
+      <div class="modal-body d-flex justify-content-center">
+        <div class="col-10 col-sm-10 col-md-8 col-lg-6">
+          <div class="mb-4">
+            <div class="form-group d-flex flex-column">
+              <input [(ngModel)]='user.nome' type="text" placeholder="*Nome: "
+                class="w-75 m-auto rounded input-modal mb-3">
 
-                <input [(ngModel)]='user.email' type="email" placeholder="*Email: " class="w-75 m-auto rounded input-modal mb-3">
+              <input [(ngModel)]='user.email' type="email" placeholder="*Email: "
+                class="w-75 m-auto rounded input-modal mb-3">
 
-                <input (input)='confirmSenha($event)' type="password" placeholder="*Senha: " class="w-75 m-auto rounded input-modal mb-3">
+              <input (input)='confirmSenha($event)' type="password" placeholder="*Senha: "
+                class="w-75 m-auto rounded input-modal mb-3">
 
-                <input [(ngModel)]='user.senha' type="password" placeholder="*Confirme sua senha: " class="w-75 m-auto rounded input-modal mb-1">
-              </div>
+              <input [(ngModel)]='user.senha' type="password" placeholder="*Confirme sua senha: "
+                class="w-75 m-auto rounded input-modal mb-1">
             </div>
-            <button type="button" class="btn btn-link link-light" data-bs-dismiss="modal">Cancelar</button>
-            <button (click)='cadastrar()' type="button" data-bs-dismiss="modal" class="btn btn-primary">Cadastrar</button>
           </div>
+          <button type="button" class="btn btn-link link-light" data-bs-dismiss="modal">Cancelar</button>
+
+          <button *ngIf="user.email == null || user.senha == null || user.nome == null" type="button" data-bs-dismiss="modal" class="btn btn-primary" disabled>Cadastrar</button>
+          <button *ngIf="user.email != null && user.senha != null && user.nome != null" (click)='cadastrar()' type="button" data-bs-dismiss="modal" class="btn btn-primary">Cadastrar</button>
         </div>
       </div>
     </div>
   </div>
-
-  
+</div>

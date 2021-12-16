@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLinkActive } from '@angular/router';
 import { Usuario } from 'src/app/model/Usuario';
+import { AlertService } from 'src/app/service/alert.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -17,7 +18,8 @@ export class UsuarioDeleteComponent implements OnInit {
   constructor(
     private authService : AuthService,
     private router : Router,
-    private route : ActivatedRoute
+    private route : ActivatedRoute,
+    private alertService: AlertService
 
   ) { }
 
@@ -38,7 +40,7 @@ export class UsuarioDeleteComponent implements OnInit {
 
   apagarUsuario() {
     this.authService.deleteUsuario(this.idUser).subscribe(() =>{
-      alert('Seu cadastro foi apagado com sucesso! Volte quando quiser!')
+      this.alertService.danger('Seu cadastro foi apagado com sucesso!')
       this.authService.sair()
       this.router.navigate(['/home'])
     })

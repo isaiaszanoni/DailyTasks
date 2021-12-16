@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Feedback } from '../model/Feedback';
+import { AlertService } from '../service/alert.service';
+import { FeedbackService } from '../service/feedback.service';
 
 @Component({
   selector: 'app-sobre',
@@ -7,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SobreComponent implements OnInit {
 
-  constructor() { }
+  feedback: Feedback = new Feedback
+
+  constructor(
+    private feedbackService: FeedbackService,
+    private alert: AlertService
+  ) { }
 
   ngOnInit(): void {
+
+  }
+
+  enviarFeedback() {
+    this.feedbackService.postFeedback(this.feedback).subscribe((resp: Feedback) => {
+      this.feedback = resp
+      this.alert.success("Feedback enviado com sucesso!\nMuito obrigado por colaborar!")
+    })
   }
 
 }
