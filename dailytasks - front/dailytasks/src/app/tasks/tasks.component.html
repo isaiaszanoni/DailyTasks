@@ -1,31 +1,30 @@
-<div class="container-fluid bg-preto" style="min-height: 90vh">
+<div class="container-fluid bg-preto" style="min-height: 83vh">
     <div class="row">
         <section class="d-flex justify-content-around align-items-center">
             <h2 class="text-branco my-3">Minhas tarefas</h2>
-            <button class="btn btn-primary btn-sm nova-task" data-bs-toggle="modal" data-bs-target="#add-taskModal" style="height: 3rem; width: 14rem;">Nova Tarefa</button>
+            <button class="btn btn-primary btn-sm nova-task" data-bs-toggle="modal" data-bs-target="#add-taskModal"
+                style="height: 3rem; width: 14rem;">Nova Tarefa</button>
         </section>
 
         <main class="col-12 d-flex justify-content-center flex-wrap-reverse w-100">
 
             <!-- Tasks part -->
-            <section class="d-flex flex-wrap col-12 col-sm-12 col-md-9 col-lg-9 justify-content-center justify-content-sm-center justify-content-md-start justify-content-lg-start" >
+            <section
+                class="d-flex flex-wrap col-12 col-sm-12 col-md-9 col-lg-9 justify-content-center justify-content-sm-center justify-content-md-start justify-content-lg-start">
 
-                <div class="w-100 m-3 rounded-3 bg-task-{{ item.cor }}"
-                    *ngFor="let item of user.myTasks">
+                <div class="w-100 m-3 rounded-3 bg-task-{{ item.cor }}" *ngFor="let item of user.myTasks">
 
                     <div class="d-flex justify-content-between col-12 mt-2">
                         <h6 class="task-title fs-3 ps-4 mb-0 pb-0">{{ item.tarefa }}</h6>
                     </div>
 
-                    <div class="">
-                        <p class="px-4 fs-6">
-                            <span>{{ item.descricao }}</span>
-                        </p>
+                    <div class="m-0 p-0">
+                        <pre class="px-4 fs-6 mt-2">{{ item.descricao }}</pre>
                     </div>
 
 
                     <div class="dropstart p-0 me-3">
-                        <button class="btn btn-dots task-dropdown text-dark p-0" href="#" role="button" id="dropdownMenuLink"
+                        <button class="btn btn-dots text-dark p-0" href="#" role="button" id="dropdownMenuLink"
                             data-bs-toggle="dropdown" aria-expanded="false">...</button>
 
                         <ul class="dropdown-menu bg-preto" aria-labelledby="dropdownMenuLink">
@@ -93,8 +92,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-link text-decoration-none"
                     data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" *ngIf='tarefa.cor == null'
-                    disabled>Salvar</button>
+                <button type="button" class="btn btn-primary" *ngIf='tarefa.cor == null' disabled>Salvar</button>
 
                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)='publicar()'
                     *ngIf='tarefa.cor != null'>Salvar</button>
