@@ -23,6 +23,15 @@ button{
     font-weight: 500;
 }
 
+.bg-gif {
+    background-image: url(../../assets/img/icones/video-home.gif);
+    background-size: 91%, cover;
+    background-position-x: center;
+    border-radius: 22%;
+    background-repeat: no-repeat;
+    background-position-y: 12px;
+}
+
 @media only screen and (min-width:200px) and (max-width:567px){
     
     button{
